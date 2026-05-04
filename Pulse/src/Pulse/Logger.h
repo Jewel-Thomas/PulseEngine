@@ -20,7 +20,7 @@ namespace Pulse {
 }
 
 
-#if PLS_BUILD_DEBUG == 1
+#ifdef PLS_DEBUG
 	// Engine Log Macros
 	#define PLS_CORE_TRACE(...)		do { ::Pulse::Logger::GetCoreLogger()->trace(__VA_ARGS__); } while(0)
 	#define PLS_CORE_DEBUG(...)		do { ::Pulse::Logger::GetCoreLogger()->debug(__VA_ARGS__);} while(0)
