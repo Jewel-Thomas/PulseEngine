@@ -9,3 +9,5 @@
 #else
 	#error Pulse currently supported for windows only. Other Platform support coming soon!
 #endif
+
+#define BIT(x) (1 << x)
