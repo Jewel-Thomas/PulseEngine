@@ -1,5 +1,6 @@
 #pragma once
 #include <sstream>
+#include <string>
 #include "Event.h"
 
 // All the keyevents are defined here
@@ -23,7 +24,7 @@ namespace Pulse {
 
 	};
 
-	class KeyPressedEvent : public KeyEvent
+	class Pulse_API KeyPressedEvent : public KeyEvent
 	{
 	private:
 
@@ -36,10 +37,10 @@ namespace Pulse {
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
 
-		virtual std::string ToString() const override
+		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_KeyCode << "( " << m_RepeatCount << " repeats)";
+			ss << "KeyPressedEvent: " << GetKeyCode() << " (" << GetRepeatCount() << " repeats)";
 			return ss.str();
 		}
 
@@ -47,17 +48,17 @@ namespace Pulse {
 
 	};
 
-	class KeyReleasedEvent : public KeyEvent
+	class Pulse_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
 
 		KeyReleasedEvent(int keyCode)
 			: KeyEvent(keyCode) {}
 
-		virtual std::string ToString() const override
+		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_KeyCode;
+			ss << "KeyReleasedEvent: " << GetKeyCode();
 			return ss.str();
 		}
 
