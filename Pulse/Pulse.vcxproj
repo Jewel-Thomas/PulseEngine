@@ -159,8 +159,10 @@
     <ClInclude Include="src\Pulse\Application.h" />
     <ClInclude Include="src\Pulse\Core.h" />
     <ClInclude Include="src\Pulse\EntryPoint.h" />
+    <ClInclude Include="src\Pulse\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Pulse\Events\Event.h" />
     <ClInclude Include="src\Pulse\Events\KeyEvent.h" />
+    <ClInclude Include="src\Pulse\Events\MouseEvent.h" />
     <ClInclude Include="src\Pulse\Logger.h" />
   </ItemGroup>
   <ItemGroup>

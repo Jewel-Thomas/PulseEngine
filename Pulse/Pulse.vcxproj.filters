@@ -21,6 +21,8 @@
     </ClInclude>
     <ClInclude Include="src\Pulse\Events\Event.h" />
     <ClInclude Include="src\Pulse\Events\KeyEvent.h" />
+    <ClInclude Include="src\Pulse\Events\MouseEvent.h" />
+    <ClInclude Include="src\Pulse\Events\ApplicationEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">

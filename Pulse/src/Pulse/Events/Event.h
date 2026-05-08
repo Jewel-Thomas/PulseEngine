@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <functional>
 #include "Pulse/Core.h"
 
 
@@ -50,6 +51,34 @@ namespace Pulse {
 		}
 	};
 
-	
+	class EventDispatcher
+	{
+		template<typename T>
+		using EventFn = std::function<bool(T&)>;
+
+	private:
+		Event& m_Event;
+
+	public:
+
+		EventDispatcher(Event& event)
+			: m_Event(event) {}
+
+		template<typename T>
+		bool Dispatch(EventFn<T> func)
+		{
+			if (m_Event.GetEventType() == T::GetStaticType())
+			{
+				m_Event.m_Handled = func(*(T*)&m_Event);
+				return true;
+			}
+			return false;
+		}
+	};
+
+	inline std::string format_as(const Event& e)
+	{
+		return e.ToString();
+	}
 
 }
