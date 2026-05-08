@@ -4,6 +4,9 @@
     <Filter Include="Pulse">
       <UniqueIdentifier>{6EABE80D-DABF-10BF-A341-B41E0F150DF0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pulse\Events">
+      <UniqueIdentifier>{926FD9A1-7ED2-6846-2758-A1FC139A34C9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pulse.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Pulse\EntryPoint.h">
       <Filter>Pulse</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pulse\Events\ApplicationEvent.h">
+      <Filter>Pulse\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pulse\Events\Event.h">
+      <Filter>Pulse\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pulse\Events\KeyEvent.h">
+      <Filter>Pulse\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pulse\Events\MouseEvent.h">
+      <Filter>Pulse\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Pulse\Logger.h">
       <Filter>Pulse</Filter>
