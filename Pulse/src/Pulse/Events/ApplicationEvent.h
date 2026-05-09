@@ -1,6 +1,4 @@
 #pragma once
-#include <sstream>
-#include <string>
 #include "Event.h"
 
 namespace Pulse {

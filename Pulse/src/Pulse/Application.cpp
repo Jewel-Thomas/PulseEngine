@@ -1,3 +1,4 @@
+#include "plspch.h"
 #include "Application.h"
 #include "Pulse/Logger.h"
 #include "Pulse/Events/ApplicationEvent.h"

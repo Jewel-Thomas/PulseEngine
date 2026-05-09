@@ -1,6 +1,4 @@
 #pragma once
-#include <string>
-#include <functional>
 #include "Pulse/Core.h"
 
 
