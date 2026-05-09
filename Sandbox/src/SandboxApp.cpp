@@ -1,3 +1,4 @@
+#include "plspch.h"
 #include <Pulse.h>
 
 class Sandbox : public Pulse::Application
