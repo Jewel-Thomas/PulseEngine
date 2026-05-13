@@ -15,3 +15,5 @@
 #ifdef PLS_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
+
+#include "Pulse/Logger.h"

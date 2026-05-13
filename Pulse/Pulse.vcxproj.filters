@@ -55,6 +55,9 @@
     <ClCompile Include="src\Pulse\Logger.cpp">
       <Filter>Pulse</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pulse\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Pulse\Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\plspch.cpp" />
   </ItemGroup>
 </Project>

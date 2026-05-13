@@ -4,7 +4,7 @@
 
 namespace Pulse {
 
-	class WindowsWindow : public Window
+	class Pulse_API WindowsWindow : public Window
 	{
 	public:
 		WindowsWindow(const WindowProps& props);
@@ -13,14 +13,14 @@ namespace Pulse {
 
 		void OnUpdate() override;
 
-		unsigned int GetWidth() const override;
-		unsigned int GetHeight() const override;
+		inline unsigned int GetWidth() const override { return m_Data.Width; }
+		inline unsigned int GetHeight() const override { return m_Data.Height; }
 
 		void SetVsync(bool enabled) override;
 		bool IsVsync() const override;
 
 	private:
-		void Init(const WindowsWindow& props);
+		void Init(const WindowProps& props);
 		void Shutdown();
 
 	private:
@@ -38,6 +38,6 @@ namespace Pulse {
 		WindowData m_Data;
 	};
 
-	// TODO: Implement WindowsWindow.cpp on 13/05/2026 !!!
+	// WIP: Implement WindowsWindow.cpp on 13/05/2026 !!!
 
 }

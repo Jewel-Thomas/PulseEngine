@@ -6,7 +6,7 @@ namespace Pulse {
 
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -16,7 +16,10 @@ namespace Pulse {
 
 	void Application::Run()
 	{
-		while (true);
+		while (isRunning)
+		{
+			m_Window->OnUpdate();
+		}
 	}
 }
 

@@ -63,15 +63,19 @@ project "Pulse"
 		}
 	
 	filter "configurations:Debug"
-		defines "PLS_DEBUG"
+		defines
+		{
+			"PLS_DEBUG_BUILD",
+			"PLS_ENABLE_ASSERTS"
+		}
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "PLS_RELEASE"
+		defines "PLS_RELEASE_BUILD"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "PLS_DIST"
+		defines "PLS_DIST_BUILD"
 		optimize "On"
 
 project "Sandbox"
@@ -111,13 +115,13 @@ project "Sandbox"
 		}
 	
 	filter "configurations:Debug"
-		defines "PLS_DEBUG"
+		defines "PLS_DEBUG_BUILD"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "PLS_RELEASE"
+		defines "PLS_RELEASE_BUILD"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "PLS_DIST"
+		defines "PLS_DIST_BUILD"
 		optimize "On"

@@ -6,17 +6,18 @@ namespace Pulse {
 
 	struct WindowProps
 	{
-		std::string m_Title;
-		unsigned int m_Width;
-		unsigned int m_Height;
+		std::string Title;
+		unsigned int Width;
+		unsigned int Height;
 
 		WindowProps(std::string title = "Pulse", 
 					unsigned int width = 1280, 
 					unsigned int height = 720)
-			: m_Title(title), m_Width(width), m_Height(height) {}
+			: Title(title), Width(width), Height(height) {}
 
 	};
 
+	// TODO: Include the input handling as well
 	class Pulse_API Window
 	{
 	public:
