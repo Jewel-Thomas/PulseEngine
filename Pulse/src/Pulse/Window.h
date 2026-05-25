@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include <functional>
 #include "Pulse/Core.h"
+#include "Events/Event.h"
 
 namespace Pulse {
 
@@ -22,6 +24,8 @@ namespace Pulse {
 	{
 	public:
 
+		using EventCallbackFn = std::function<void(Event&)>;
+
 		virtual ~Window() {}
 		
 		virtual unsigned int GetWidth() const = 0;
@@ -29,6 +33,7 @@ namespace Pulse {
 
 		virtual void OnUpdate() = 0;
 
+		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVsync(bool enabled) = 0;
 		virtual bool IsVsync() const = 0;
 

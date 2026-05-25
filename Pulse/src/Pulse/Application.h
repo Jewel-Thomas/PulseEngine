@@ -9,7 +9,7 @@ namespace Pulse {
 	{
 	private:
 		std::unique_ptr<Window> m_Window;
-		bool isRunning = true;
+		bool m_IsRunning = true;
 	public:
 		Application();
 		virtual ~Application();
