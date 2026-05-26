@@ -1,14 +1,13 @@
 #include "plspch.h"
 #include "Application.h"
 #include "Pulse/Logger.h"
-#include "Pulse/Events/ApplicationEvent.h"
-#include "Pulse/Events/Event.h"
+#include "GLFW/glfw3.h"
 
 namespace Pulse {
 
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -18,10 +17,12 @@ namespace Pulse {
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1920, 1080);
-		PLS_CORE_TRACE(e);
-
-		while (true);
+		while (m_IsRunning)
+		{
+			glClearColor(1, 0, 0, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
+		}
 	}
 }
 

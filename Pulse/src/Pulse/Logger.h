@@ -19,8 +19,7 @@ namespace Pulse {
 
 }
 
-
-#ifdef PLS_DEBUG
+#ifdef PLS_DEBUG_BUILD
 	// Engine Log Macros
 	#define PLS_CORE_TRACE(...)		do { ::Pulse::Logger::GetCoreLogger()->trace(__VA_ARGS__); } while(0)
 	#define PLS_CORE_DEBUG(...)		do { ::Pulse::Logger::GetCoreLogger()->debug(__VA_ARGS__);} while(0)
@@ -53,4 +52,3 @@ namespace Pulse {
 	#define PLS_ERROR(...)			((void)0)
 	#define PLS_FATAL(...)			((void)0)
 #endif
-

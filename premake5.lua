@@ -10,6 +10,11 @@ workspace "Pulse"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDirs = {}
+IncludeDirs["GLFW"] = "Pulse/vendor/GLFW/include" 
+
+include "Pulse/vendor/GLFW"
+
 project "Pulse"
 	location "Pulse"
 	kind "SharedLib"
@@ -30,7 +35,14 @@ project "Pulse"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDirs.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -51,15 +63,19 @@ project "Pulse"
 		}
 	
 	filter "configurations:Debug"
-		defines "PLS_DEBUG"
+		defines
+		{
+			"PLS_DEBUG_BUILD",
+			"PLS_ENABLE_ASSERTS"
+		}
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "PLS_RELEASE"
+		defines "PLS_RELEASE_BUILD"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "PLS_DIST"
+		defines "PLS_DIST_BUILD"
 		optimize "On"
 
 project "Sandbox"
@@ -99,13 +115,13 @@ project "Sandbox"
 		}
 	
 	filter "configurations:Debug"
-		defines "PLS_DEBUG"
+		defines "PLS_DEBUG_BUILD"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "PLS_RELEASE"
+		defines "PLS_RELEASE_BUILD"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "PLS_DIST"
+		defines "PLS_DIST_BUILD"
 		optimize "On"

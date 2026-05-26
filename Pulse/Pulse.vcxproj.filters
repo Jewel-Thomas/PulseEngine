@@ -7,6 +7,12 @@
     <Filter Include="Pulse\Events">
       <UniqueIdentifier>{926FD9A1-7ED2-6846-2758-A1FC139A34C9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pulse\Platform">
+      <UniqueIdentifier>{82A3119A-6E71-05A0-5705-76C64372E104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pulse\Platform\Windows">
+      <UniqueIdentifier>{BCAF4304-A8A9-6C56-9116-03677DAFD2C2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pulse.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\Pulse\Logger.h">
       <Filter>Pulse</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pulse\Platform\Windows\WindowsWindow.h">
+      <Filter>Pulse\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pulse\Window.h">
+      <Filter>Pulse</Filter>
+    </ClInclude>
     <ClInclude Include="src\plspch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\Pulse\Logger.cpp">
       <Filter>Pulse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pulse\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Pulse\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\plspch.cpp" />
   </ItemGroup>
