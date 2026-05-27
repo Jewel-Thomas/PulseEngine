@@ -23,7 +23,7 @@ namespace Pulse {
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		PLS_CORE_INFO("{0}", event);
+		PLS_CORE_TRACE("{0}", event);
 	}
 
 	void Application::Run()
