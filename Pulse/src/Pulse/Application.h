@@ -1,6 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "Pulse/Events/Event.h"
+#include "Pulse/Events/ApplicationEvent.h"
 #include "Pulse/Window.h"
 
 namespace Pulse {
@@ -13,7 +14,9 @@ namespace Pulse {
 	public:
 		Application();
 		virtual ~Application();
+		void OnEvent(Event& event);
 		void Run();
+		bool OnWindowClose(WindowCloseEvent& event);
 	};
 
 	Application* CreateApplication();

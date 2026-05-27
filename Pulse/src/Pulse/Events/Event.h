@@ -49,6 +49,8 @@ namespace Pulse {
 		{
 			return GetCategoryFlags() & category;
 		}
+
+		friend class EventDispatcher;
 	};
 
 	class EventDispatcher
