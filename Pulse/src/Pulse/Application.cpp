@@ -20,6 +20,9 @@ namespace Pulse {
 
 	void Application::OnEvent(Event& event)
 	{
+		EventDispatcher dispatcher(event);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
 		PLS_CORE_INFO("{0}", event);
 	}
 
@@ -31,6 +34,12 @@ namespace Pulse {
 			glClear(GL_COLOR_BUFFER_BIT);
 			m_Window->OnUpdate();
 		}
+	}
+
+	bool Application::OnWindowClose(WindowCloseEvent& event)
+	{
+		m_IsRunning = false;
+		return true;
 	}
 }
 

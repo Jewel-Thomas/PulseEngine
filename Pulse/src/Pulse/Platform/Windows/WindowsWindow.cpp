@@ -160,7 +160,5 @@ namespace Pulse {
 		return m_Data.Vsync;
 	}
 
-
-
 }
 
