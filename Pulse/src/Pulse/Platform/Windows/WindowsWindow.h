@@ -16,7 +16,7 @@ namespace Pulse {
 		inline unsigned int GetWidth() const override { return m_Data.Width; }
 		inline unsigned int GetHeight() const override { return m_Data.Height; }
 
-		inline void SetEventCallback(const EventCallbackFn& callback) { m_Data.callback = callback; }
+		inline void SetEventCallback(const EventCallbackFn& callback) { m_Data.eventCallback = callback; }
 
 		void SetVsync(bool enabled) override;
 		bool IsVsync() const override;
@@ -36,7 +36,7 @@ namespace Pulse {
 			unsigned int Height;
 			bool Vsync;
 
-			EventCallbackFn callback;
+			EventCallbackFn eventCallback;
 		};
 
 		WindowData m_Data;

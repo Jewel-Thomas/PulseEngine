@@ -13,6 +13,7 @@ namespace Pulse {
 	public:
 		Application();
 		virtual ~Application();
+		void OnEvent(Event& event);
 		void Run();
 	};
 
