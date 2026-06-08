@@ -84,7 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/utf-8 /MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -113,7 +113,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/utf-8 /MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -143,7 +143,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/utf-8 /MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -169,6 +169,8 @@
     <ClInclude Include="src\Pulse\Events\Event.h" />
     <ClInclude Include="src\Pulse\Events\KeyEvent.h" />
     <ClInclude Include="src\Pulse\Events\MouseEvent.h" />
+    <ClInclude Include="src\Pulse\Layer.h" />
+    <ClInclude Include="src\Pulse\LayerStack.h" />
     <ClInclude Include="src\Pulse\Logger.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Pulse\Window.h" />
@@ -176,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp" />
+    <ClCompile Include="src\Pulse\Layer.cpp" />
+    <ClCompile Include="src\Pulse\LayerStack.cpp" />
     <ClCompile Include="src\Pulse\Logger.cpp" />
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\plspch.cpp">

@@ -37,6 +37,12 @@
     <ClInclude Include="src\Pulse\Events\MouseEvent.h">
       <Filter>Pulse\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pulse\Layer.h">
+      <Filter>Pulse</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pulse\LayerStack.h">
+      <Filter>Pulse</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pulse\Logger.h">
       <Filter>Pulse</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">
+      <Filter>Pulse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pulse\Layer.cpp">
+      <Filter>Pulse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pulse\LayerStack.cpp">
       <Filter>Pulse</Filter>
     </ClCompile>
     <ClCompile Include="src\Pulse\Logger.cpp">
