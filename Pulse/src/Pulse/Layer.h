@@ -11,7 +11,6 @@ namespace Pulse {
 		std::string m_DebugName;
 
 	public:
-
 		Layer(const std::string& debugName = "Layer");
 		virtual ~Layer();
 
