@@ -4,6 +4,8 @@
 #include "Pulse/Events/KeyEvent.h";
 #include "Pulse/Events/MouseEvent.h";
 
+#include <glad/glad.h>
+
 namespace Pulse {
 
 	static bool s_GLFWInitialized = false;
@@ -56,6 +58,8 @@ namespace Pulse {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		PLS_CORE_ASSERT(status, "Failed to initialize Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVsync(true);
 
