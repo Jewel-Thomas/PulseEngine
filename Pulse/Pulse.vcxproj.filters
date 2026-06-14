@@ -7,8 +7,14 @@
     <Filter Include="Pulse\Events">
       <UniqueIdentifier>{926FD9A1-7ED2-6846-2758-A1FC139A34C9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pulse\Imgui">
+      <UniqueIdentifier>{38030C89-A4B8-847E-2DAD-7E5599617B82}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Pulse\Platform">
       <UniqueIdentifier>{82A3119A-6E71-05A0-5705-76C64372E104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pulse\Platform\OpenGL">
+      <UniqueIdentifier>{76064743-E272-023E-AB66-9A9B179224A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Pulse\Platform\Windows">
       <UniqueIdentifier>{BCAF4304-A8A9-6C56-9116-03677DAFD2C2}</UniqueIdentifier>
@@ -37,6 +43,9 @@
     <ClInclude Include="src\Pulse\Events\MouseEvent.h">
       <Filter>Pulse\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pulse\Imgui\ImguiLayer.h">
+      <Filter>Pulse\Imgui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pulse\Layer.h">
       <Filter>Pulse</Filter>
     </ClInclude>
@@ -45,6 +54,9 @@
     </ClInclude>
     <ClInclude Include="src\Pulse\Logger.h">
       <Filter>Pulse</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.h">
+      <Filter>Pulse\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsWindow.h">
       <Filter>Pulse\Platform\Windows</Filter>
@@ -58,6 +70,9 @@
     <ClCompile Include="src\Pulse\Application.cpp">
       <Filter>Pulse</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pulse\Imgui\ImguiLayer.cpp">
+      <Filter>Pulse\Imgui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Pulse\Layer.cpp">
       <Filter>Pulse</Filter>
     </ClCompile>
@@ -66,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="src\Pulse\Logger.cpp">
       <Filter>Pulse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.cpp">
+      <Filter>Pulse\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsWindow.cpp">
       <Filter>Pulse\Platform\Windows</Filter>
