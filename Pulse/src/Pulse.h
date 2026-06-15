@@ -6,6 +6,9 @@
 // Logger
 #include "Pulse/Logger.h"
 
+// ImguiLayer
+#include "Pulse/Imgui/ImguiLayer.h"
+
 // EntryPoint
 #include "Pulse/EntryPoint.h"
 // ----------

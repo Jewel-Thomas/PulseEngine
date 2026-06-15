@@ -12,10 +12,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDirs = {}
 IncludeDirs["GLFW"] = "Pulse/vendor/GLFW/include" 
-IncludeDirs["Glad"] = "Pulse/vendor/Glad/include" 
+IncludeDirs["Glad"] = "Pulse/vendor/Glad/include"
+IncludeDirs["Imgui"] = "Pulse/vendor/imgui"
 
 include "Pulse/vendor/GLFW"
 include "Pulse/vendor/Glad"
+include "Pulse/vendor/imgui"
 
 project "Pulse"
 	location "Pulse"
@@ -39,14 +41,16 @@ project "Pulse"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDirs.GLFW}",
-		"%{IncludeDirs.Glad}"
+		"%{IncludeDirs.Glad}",
+		"%{IncludeDirs.Imgui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"opengl32.lib",
-		"Glad"
+		"Glad",
+		"ImGui"
 	}
 
 	filter "system:windows"
@@ -59,7 +63,8 @@ project "Pulse"
 		{
 			"PLS_PLATFORM_WINDOWS",
 			"PLS_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
+			"GLFW_INCLUDE_NONE",
+			"IMGUI_IMPL_OPENGL_LOADER_CUSTOM"
 		}
 
 		postbuildcommands
