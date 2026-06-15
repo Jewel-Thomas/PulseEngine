@@ -173,6 +173,7 @@
     <ClInclude Include="src\Pulse\Layer.h" />
     <ClInclude Include="src\Pulse\LayerStack.h" />
     <ClInclude Include="src\Pulse\Logger.h" />
+    <ClInclude Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Pulse\Window.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="src\Pulse\Layer.cpp" />
     <ClCompile Include="src\Pulse\LayerStack.cpp" />
     <ClCompile Include="src\Pulse\Logger.cpp" />
+    <ClCompile Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\plspch.cpp">

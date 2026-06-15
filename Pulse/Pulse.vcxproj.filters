@@ -65,6 +65,7 @@
       <Filter>Pulse</Filter>
     </ClInclude>
     <ClInclude Include="src\plspch.h" />
+    <ClInclude Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">
@@ -89,5 +90,6 @@
       <Filter>Pulse\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\plspch.cpp" />
+    <ClCompile Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.cpp" />
   </ItemGroup>
 </Project>

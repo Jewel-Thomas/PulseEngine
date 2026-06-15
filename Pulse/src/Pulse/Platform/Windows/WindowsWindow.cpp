@@ -1,8 +1,8 @@
 #include "plspch.h"
 #include "WindowsWindow.h"
 #include "Pulse/Events/ApplicationEvent.h"
-#include "Pulse/Events/KeyEvent.h";
-#include "Pulse/Events/MouseEvent.h";
+#include "Pulse/Events/KeyEvent.h"
+#include "Pulse/Events/MouseEvent.h"
 
 #include <glad/glad.h>
 
