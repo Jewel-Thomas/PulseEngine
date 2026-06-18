@@ -5,8 +5,12 @@
 #include <GLFW/glfw3.h>
 #include "Pulse/Application.h"
 #include "Pulse/Events/MouseEvent.h"
+#include "Pulse/Events/KeyEvent.h"
+#include "Pulse/Events/ApplicationEvent.h"
 
 namespace Pulse {
+
+	static ImGuiKey GetImGuiKeyFromPulseKey(int keycode);
 
 	ImguiLayer::ImguiLayer()
 		: Layer("ImguiLayer")
@@ -44,7 +48,7 @@ namespace Pulse {
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
-		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
+		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
 
 		float time = (float)glfwGetTime();
 		io.DeltaTime = m_Time > 0.0f ? (time - m_Time) :  (1.0f / 60.0f);
@@ -54,7 +58,8 @@ namespace Pulse {
 		ImGui::NewFrame();
 
 		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+		if(show)
+			ImGui::ShowDemoWindow(&show);
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -64,6 +69,7 @@ namespace Pulse {
 	{
 		EventDispatcher dispatcher(event);
 
+		// Mouse Events
 		dispatcher.Dispatch<MouseButtonPressedEvent>(
 			[](MouseButtonPressedEvent& e)
 			{
@@ -91,6 +97,50 @@ namespace Pulse {
 				ImGui::GetIO().AddMouseWheelEvent(e.GetOffsetX(), e.GetOffsetY());
 				return false;
 			});
+
+		// Key Events
+		dispatcher.Dispatch<KeyPressedEvent>(
+			[](KeyPressedEvent& e)
+			{
+				ImGuiKey imKey = GetImGuiKeyFromPulseKey(e.GetKeyCode());
+				if (imKey != ImGuiKey_None)
+					ImGui::GetIO().AddKeyEvent(imKey, true);
+
+				return false;
+			});
+
+		dispatcher.Dispatch<KeyReleasedEvent>(
+			[](KeyReleasedEvent& e)
+			{
+				ImGuiKey imKey = GetImGuiKeyFromPulseKey(e.GetKeyCode());
+				if (imKey != ImGuiKey_None)
+					ImGui::GetIO().AddKeyEvent(imKey, false);
+
+				return false;
+			});
+	}
+
+	static ImGuiKey GetImGuiKeyFromPulseKey(int keycode)
+	{
+		switch (keycode)
+		{
+			case GLFW_KEY_TAB: return ImGuiKey_Tab;
+			case GLFW_KEY_LEFT: return ImGuiKey_LeftArrow;
+			case GLFW_KEY_RIGHT: return ImGuiKey_RightArrow;
+			case GLFW_KEY_UP: return ImGuiKey_UpArrow;
+			case GLFW_KEY_DOWN: return ImGuiKey_DownArrow;
+			case GLFW_KEY_PAGE_UP: return ImGuiKey_PageUp;
+			case GLFW_KEY_PAGE_DOWN: return ImGuiKey_PageDown;
+			case GLFW_KEY_HOME: return ImGuiKey_Home;
+			case GLFW_KEY_END: return ImGuiKey_End;
+			case GLFW_KEY_INSERT: return ImGuiKey_Insert;
+			case GLFW_KEY_DELETE: return ImGuiKey_Delete;
+			case GLFW_KEY_BACKSPACE: return ImGuiKey_Backspace;
+			case GLFW_KEY_SPACE: return ImGuiKey_Space;
+			case GLFW_KEY_ENTER: return ImGuiKey_Enter;
+			case GLFW_KEY_ESCAPE: return ImGuiKey_Escape;
+			default: return ImGuiKey_None;
+		}
 	}
 
 }
