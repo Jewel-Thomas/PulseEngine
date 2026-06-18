@@ -4,6 +4,7 @@
 #include "Pulse/Platform/ImguiGLFW/imgui_impl_glfw.h"
 #include <GLFW/glfw3.h>
 #include "Pulse/Application.h"
+#include "Pulse/Events/MouseEvent.h"
 
 namespace Pulse {
 
@@ -30,7 +31,7 @@ namespace Pulse {
 			Application::Get().GetWindow().GetNativeWindow()
 		);
 
-		ImGui_ImplGlfw_InitForOpenGL(window, true);
+		ImGui_ImplGlfw_InitForOpenGL(window, false);
 		ImGui_ImplOpenGL3_Init("#version 410");
 	}
 
@@ -61,7 +62,35 @@ namespace Pulse {
 
 	void ImguiLayer::OnEvent(Event& event)
 	{
+		EventDispatcher dispatcher(event);
 
+		dispatcher.Dispatch<MouseButtonPressedEvent>(
+			[](MouseButtonPressedEvent& e)
+			{
+				ImGui::GetIO().AddMouseButtonEvent(e.GetMouseButton(), true);
+				return false;
+			});
+
+		dispatcher.Dispatch<MouseButtonReleasedEvent>(
+			[](MouseButtonReleasedEvent& e)
+			{
+				ImGui::GetIO().AddMouseButtonEvent(e.GetMouseButton(), false);
+				return false;
+			});
+
+		dispatcher.Dispatch<MouseMovedEvent>(
+			[](MouseMovedEvent& e)
+			{
+				ImGui::GetIO().AddMousePosEvent(e.GetX(), e.GetY());
+				return false;
+			});
+
+		dispatcher.Dispatch<MouseScrolledEvent>(
+			[](MouseScrolledEvent& e)
+			{
+				ImGui::GetIO().AddMouseWheelEvent(e.GetOffsetX(), e.GetOffsetY());
+				return false;
+			});
 	}
 
 }
