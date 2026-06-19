@@ -63,4 +63,21 @@ namespace Pulse {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
+	class Pulse_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+
+		KeyTypedEvent(int keyCode)
+			: KeyEvent(keyCode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << GetKeyCode();
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
+
 }

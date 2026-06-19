@@ -29,6 +29,7 @@ namespace Pulse {
 
 		bool OnKeyPressed(KeyPressedEvent& e);
 		bool OnKeyReleased(KeyReleasedEvent& e);
+		bool OnKeyTyped(KeyTypedEvent& e);
 
 		bool OnWindowResize(WindowResizeEvent& e);
 	};
