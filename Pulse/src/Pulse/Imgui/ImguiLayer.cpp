@@ -3,10 +3,8 @@
 #include "Pulse/Platform/OpenGL/ImguiOpenGLRenderer.h"
 #include "Pulse/Platform/ImguiGLFW/imgui_impl_glfw.h"
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 #include "Pulse/Application.h"
-#include "Pulse/Events/MouseEvent.h"
-#include "Pulse/Events/KeyEvent.h"
-#include "Pulse/Events/ApplicationEvent.h"
 
 namespace Pulse {
 
@@ -69,55 +67,76 @@ namespace Pulse {
 	{
 		EventDispatcher dispatcher(event);
 
-		// Mouse Events
-		dispatcher.Dispatch<MouseButtonPressedEvent>(
-			[](MouseButtonPressedEvent& e)
-			{
-				ImGui::GetIO().AddMouseButtonEvent(e.GetMouseButton(), true);
-				return false;
-			});
+		dispatcher.Dispatch<MouseButtonPressedEvent>(PLS_BIND_EVENT_FN(ImguiLayer::OnMouseButtonPressed));
+		dispatcher.Dispatch<MouseButtonReleasedEvent>(PLS_BIND_EVENT_FN(ImguiLayer::OnMouseButtonReleased));
+		dispatcher.Dispatch<MouseMovedEvent>(PLS_BIND_EVENT_FN(ImguiLayer::OnMouseMoved));
+		dispatcher.Dispatch<MouseScrolledEvent>(PLS_BIND_EVENT_FN(ImguiLayer::OnMouseScrolled));
+		dispatcher.Dispatch<KeyPressedEvent>(PLS_BIND_EVENT_FN(ImguiLayer::OnKeyPressed));
+		dispatcher.Dispatch<KeyReleasedEvent>(PLS_BIND_EVENT_FN(ImguiLayer::OnKeyReleased));
+		dispatcher.Dispatch<WindowResizeEvent>(PLS_BIND_EVENT_FN(ImguiLayer::OnWindowResize));
+	}
 
-		dispatcher.Dispatch<MouseButtonReleasedEvent>(
-			[](MouseButtonReleasedEvent& e)
-			{
-				ImGui::GetIO().AddMouseButtonEvent(e.GetMouseButton(), false);
-				return false;
-			});
+	
+	/* Mouse Events */
+	bool ImguiLayer::OnMouseButtonPressed(MouseButtonPressedEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.AddMouseButtonEvent(e.GetMouseButton(), true);
+		return false;
+	}
 
-		dispatcher.Dispatch<MouseMovedEvent>(
-			[](MouseMovedEvent& e)
-			{
-				ImGui::GetIO().AddMousePosEvent(e.GetX(), e.GetY());
-				return false;
-			});
+	bool ImguiLayer::OnMouseButtonReleased(MouseButtonReleasedEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.AddMouseButtonEvent(e.GetMouseButton(), false);
+		return false;
+	}
 
-		dispatcher.Dispatch<MouseScrolledEvent>(
-			[](MouseScrolledEvent& e)
-			{
-				ImGui::GetIO().AddMouseWheelEvent(e.GetOffsetX(), e.GetOffsetY());
-				return false;
-			});
+	bool ImguiLayer::OnMouseMoved(MouseMovedEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.AddMousePosEvent(e.GetX(), e.GetY());
+		return false;
+	}
 
-		// Key Events
-		dispatcher.Dispatch<KeyPressedEvent>(
-			[](KeyPressedEvent& e)
-			{
-				ImGuiKey imKey = GetImGuiKeyFromPulseKey(e.GetKeyCode());
-				if (imKey != ImGuiKey_None)
-					ImGui::GetIO().AddKeyEvent(imKey, true);
+	bool ImguiLayer::OnMouseScrolled(MouseScrolledEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.AddMouseWheelEvent(e.GetOffsetX(), e.GetOffsetY());
+		return false;
+	}
 
-				return false;
-			});
+	/* Key Events */
+	bool ImguiLayer::OnKeyPressed(KeyPressedEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		ImGuiKey imKey = GetImGuiKeyFromPulseKey(e.GetKeyCode());
 
-		dispatcher.Dispatch<KeyReleasedEvent>(
-			[](KeyReleasedEvent& e)
-			{
-				ImGuiKey imKey = GetImGuiKeyFromPulseKey(e.GetKeyCode());
-				if (imKey != ImGuiKey_None)
-					ImGui::GetIO().AddKeyEvent(imKey, false);
+		if (imKey != ImGuiKey_None)
+			io.AddKeyEvent(imKey, true);
 
-				return false;
-			});
+		return false;
+	}
+
+	bool ImguiLayer::OnKeyReleased(KeyReleasedEvent& e)	
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		ImGuiKey imKey = GetImGuiKeyFromPulseKey(e.GetKeyCode());
+
+		if (imKey != ImGuiKey_None)
+			io.AddKeyEvent(imKey, false);
+
+		return false;
+	}
+
+	/* Application Events */
+	bool ImguiLayer::OnWindowResize(WindowResizeEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.DisplaySize = ImVec2((float)e.GetWidth(), (float)e.GetHeight());
+		io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
+		glViewport(0, 0, e.GetWidth(), e.GetHeight());
+		return false;
 	}
 
 	static ImGuiKey GetImGuiKeyFromPulseKey(int keycode)
@@ -139,6 +158,12 @@ namespace Pulse {
 			case GLFW_KEY_SPACE: return ImGuiKey_Space;
 			case GLFW_KEY_ENTER: return ImGuiKey_Enter;
 			case GLFW_KEY_ESCAPE: return ImGuiKey_Escape;
+			case GLFW_KEY_LEFT_SHIFT: return ImGuiKey_LeftShift;
+			case GLFW_KEY_RIGHT_SHIFT: return ImGuiKey_RightShift;
+			case GLFW_KEY_LEFT_CONTROL: return ImGuiKey_LeftCtrl;
+			case GLFW_KEY_RIGHT_CONTROL: return ImGuiKey_RightCtrl;
+			case GLFW_KEY_LEFT_ALT: return ImGuiKey_LeftAlt;
+			case GLFW_KEY_RIGHT_ALT: return ImGuiKey_RightAlt;
 			default: return ImGuiKey_None;
 		}
 	}
