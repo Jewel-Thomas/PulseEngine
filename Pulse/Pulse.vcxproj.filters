@@ -13,6 +13,9 @@
     <Filter Include="Pulse\Platform">
       <UniqueIdentifier>{82A3119A-6E71-05A0-5705-76C64372E104}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pulse\Platform\ImguiGLFW">
+      <UniqueIdentifier>{DC3B7082-C860-BF02-F1AB-A492DD2FBE20}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Pulse\Platform\OpenGL">
       <UniqueIdentifier>{76064743-E272-023E-AB66-9A9B179224A6}</UniqueIdentifier>
     </Filter>
@@ -55,6 +58,9 @@
     <ClInclude Include="src\Pulse\Logger.h">
       <Filter>Pulse</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.h">
+      <Filter>Pulse\Platform\ImguiGLFW</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.h">
       <Filter>Pulse\Platform\OpenGL</Filter>
     </ClInclude>
@@ -65,7 +71,6 @@
       <Filter>Pulse</Filter>
     </ClInclude>
     <ClInclude Include="src\plspch.h" />
-    <ClInclude Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">
@@ -83,6 +88,9 @@
     <ClCompile Include="src\Pulse\Logger.cpp">
       <Filter>Pulse</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.cpp">
+      <Filter>Pulse\Platform\ImguiGLFW</Filter>
+    </ClCompile>
     <ClCompile Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.cpp">
       <Filter>Pulse\Platform\OpenGL</Filter>
     </ClCompile>
@@ -90,6 +98,5 @@
       <Filter>Pulse\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\plspch.cpp" />
-    <ClCompile Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.cpp" />
   </ItemGroup>
 </Project>

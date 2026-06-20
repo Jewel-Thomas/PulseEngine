@@ -23,6 +23,7 @@ project "Pulse"
 	location "Pulse"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" ..outputdir.. "/%{prj.name}")
 	objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
@@ -55,7 +56,6 @@ project "Pulse"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 		buildoptions { "/utf-8" }
 
@@ -78,23 +78,24 @@ project "Pulse"
 			"PLS_DEBUG_BUILD",
 			"PLS_ENABLE_ASSERTS"
 		}
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PLS_RELEASE_BUILD"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PLS_DIST_BUILD"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" ..outputdir.. "/%{prj.name}")
 	objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
@@ -118,7 +119,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 		buildoptions { "/utf-8" }
 
@@ -129,15 +129,15 @@ project "Sandbox"
 	
 	filter "configurations:Debug"
 		defines "PLS_DEBUG_BUILD"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PLS_RELEASE_BUILD"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PLS_DIST_BUILD"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
