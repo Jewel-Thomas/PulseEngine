@@ -73,6 +73,8 @@
     <ClInclude Include="src\plspch.h" />
     <ClInclude Include="src\Pulse\Input.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Pulse\KeyCodes.h" />
+    <ClInclude Include="src\Pulse\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">

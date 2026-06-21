@@ -9,12 +9,20 @@ public:
 
 	void OnUpdate() override
 	{
-		PLS_INFO("ExampleLayer::Update");
+		if (Pulse::Input::IsKeyPressed(PLS_KEY_SPACE))
+		{
+			PLS_INFO("Space bar was pressed!");
+		}
 	}
 
 	void OnEvent(Pulse::Event& event) override
 	{
-		PLS_TRACE("{0}", event);
+		if (event.GetEventType() == Pulse::EventType::MouseButtonPressed)
+		{
+			Pulse::MouseButtonPressedEvent& mouseEvent = static_cast<Pulse::MouseButtonPressedEvent&>(event);
+			if (mouseEvent.GetMouseButton() == PLS_MOUSE_BUTTON_1)
+				PLS_INFO("Left Mouse Button was clicked!");
+		}
 	}
 };
 
