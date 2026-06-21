@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "Pulse/Logger.h"
 #include "glad/glad.h"
+#include "Input.h"
 
 namespace Pulse {
 
@@ -54,6 +55,9 @@ namespace Pulse {
 		{
 			glClearColor(1, 0, 0, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			auto [x, y] = Input::GetMousePosition();
+			PLS_CORE_TRACE("Mouse position : ({0}, {1})", x, y);
 
 			for (auto layer : m_LayerStack)
 			{
