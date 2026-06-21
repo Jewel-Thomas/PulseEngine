@@ -9,6 +9,11 @@
 // ImguiLayer
 #include "Pulse/Imgui/ImguiLayer.h"
 
+// Input
+#include "Pulse/Input.h"
+#include "Pulse/KeyCodes.h"
+#include "Pulse/MouseButtonCodes.h"
+
 // EntryPoint
 #include "Pulse/EntryPoint.h"
 // ----------

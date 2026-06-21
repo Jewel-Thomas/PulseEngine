@@ -171,9 +171,11 @@
     <ClInclude Include="src\Pulse\Events\MouseEvent.h" />
     <ClInclude Include="src\Pulse\Imgui\ImguiLayer.h" />
     <ClInclude Include="src\Pulse\Input.h" />
+    <ClInclude Include="src\Pulse\KeyCodes.h" />
     <ClInclude Include="src\Pulse\Layer.h" />
     <ClInclude Include="src\Pulse\LayerStack.h" />
     <ClInclude Include="src\Pulse\Logger.h" />
+    <ClInclude Include="src\Pulse\MouseButtonCodes.h" />
     <ClInclude Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsInput.h" />

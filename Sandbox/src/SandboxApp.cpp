@@ -9,12 +9,15 @@ public:
 
 	void OnUpdate() override
 	{
-		PLS_INFO("ExampleLayer::Update");
+		if (Pulse::Input::IsKeyPressed(PLS_KEY_SPACE))
+		{
+			PLS_INFO("Space bar was pressed!");
+		}
 	}
 
 	void OnEvent(Pulse::Event& event) override
 	{
-		PLS_TRACE("{0}", event);
+
 	}
 };
 
