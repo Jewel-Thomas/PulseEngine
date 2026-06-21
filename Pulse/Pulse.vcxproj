@@ -170,11 +170,13 @@
     <ClInclude Include="src\Pulse\Events\KeyEvent.h" />
     <ClInclude Include="src\Pulse\Events\MouseEvent.h" />
     <ClInclude Include="src\Pulse\Imgui\ImguiLayer.h" />
+    <ClInclude Include="src\Pulse\Input.h" />
     <ClInclude Include="src\Pulse\Layer.h" />
     <ClInclude Include="src\Pulse\LayerStack.h" />
     <ClInclude Include="src\Pulse\Logger.h" />
     <ClInclude Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.h" />
+    <ClInclude Include="src\Pulse\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Pulse\Window.h" />
     <ClInclude Include="src\plspch.h" />
@@ -187,6 +189,7 @@
     <ClCompile Include="src\Pulse\Logger.cpp" />
     <ClCompile Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Pulse\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\plspch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

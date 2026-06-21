@@ -71,6 +71,8 @@
       <Filter>Pulse</Filter>
     </ClInclude>
     <ClInclude Include="src\plspch.h" />
+    <ClInclude Include="src\Pulse\Input.h" />
+    <ClInclude Include="src\Pulse\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">
@@ -98,5 +100,6 @@
       <Filter>Pulse\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\plspch.cpp" />
+    <ClCompile Include="src\Pulse\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>
