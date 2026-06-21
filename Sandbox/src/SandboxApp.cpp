@@ -17,7 +17,12 @@ public:
 
 	void OnEvent(Pulse::Event& event) override
 	{
-
+		if (event.GetEventType() == Pulse::EventType::MouseButtonPressed)
+		{
+			Pulse::MouseButtonPressedEvent& mouseEvent = static_cast<Pulse::MouseButtonPressedEvent&>(event);
+			if (mouseEvent.GetMouseButton() == PLS_MOUSE_BUTTON_1)
+				PLS_INFO("Left Mouse Button was clicked!");
+		}
 	}
 };
 
