@@ -16,6 +16,7 @@ IncludeDirs = {}
 IncludeDirs["GLFW"] = "Pulse/vendor/GLFW/include" 
 IncludeDirs["Glad"] = "Pulse/vendor/Glad/include"
 IncludeDirs["Imgui"] = "Pulse/vendor/imgui"
+IncludeDirs["glm"] = "Pulse/vendor/glm"
 
 include "Pulse/vendor/GLFW"
 include "Pulse/vendor/Glad"
@@ -36,7 +37,9 @@ project "Pulse"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -45,7 +48,8 @@ project "Pulse"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDirs.GLFW}",
 		"%{IncludeDirs.Glad}",
-		"%{IncludeDirs.Imgui}"
+		"%{IncludeDirs.Imgui}",
+		"%{IncludeDirs.glm}"
 	}
 
 	links
@@ -111,7 +115,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Pulse/vendor/spdlog/include",
-		"Pulse/src"
+		"Pulse/src",
+		"%{IncludeDirs.glm}"
 	}
 
 	links
