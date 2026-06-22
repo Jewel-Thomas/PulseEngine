@@ -1,11 +1,14 @@
 #include "plspch.h"
 #include <Pulse.h>
 
+
 class ExampleLayer : public Pulse::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example") {}
+		: Layer("Example") 
+	{
+	}
 
 	void OnUpdate() override
 	{

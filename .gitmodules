@@ -7,3 +7,6 @@
 [submodule "Pulse/vendor/imgui"]
 	path = Pulse/vendor/imgui
 	url = https://github.com/ocornut/imgui.git
+[submodule "Pulse/vendor/glm"]
+	path = Pulse/vendor/glm
+	url = https://github.com/g-truc/glm.git
