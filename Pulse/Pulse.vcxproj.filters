@@ -93,12 +93,6 @@
     <ClInclude Include="src\Pulse\MouseButtonCodes.h">
       <Filter>src\Pulse</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.h">
-      <Filter>src\Pulse\Platform\ImguiGLFW</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.h">
-      <Filter>src\Pulse\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsInput.h">
       <Filter>src\Pulse\Platform\Windows</Filter>
     </ClInclude>
@@ -1385,12 +1379,6 @@
     <ClCompile Include="src\Pulse\Logger.cpp">
       <Filter>src\Pulse</Filter>
     </ClCompile>
-    <ClCompile Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.cpp">
-      <Filter>src\Pulse\Platform\ImguiGLFW</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.cpp">
-      <Filter>src\Pulse\Platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Pulse\Platform\Windows</Filter>
     </ClCompile>
@@ -1400,5 +1388,6 @@
     <ClCompile Include="src\plspch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pulse\Imgui\ImguiBuild.cpp" />
   </ItemGroup>
 </Project>

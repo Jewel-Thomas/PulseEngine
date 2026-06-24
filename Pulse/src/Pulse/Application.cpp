@@ -17,6 +17,9 @@ namespace Pulse {
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		m_ImguiLayer = new ImguiLayer();
+		PushOverlay(m_ImguiLayer);
 	}
 
 	Application::~Application()
@@ -60,6 +63,13 @@ namespace Pulse {
 			{
 				layer->OnUpdate();
 			}
+
+			m_ImguiLayer->OnBegin();
+			for (auto layer : m_LayerStack)
+			{
+				layer->OnImguiRender();
+			}
+			m_ImguiLayer->OnEnd();
 
 			m_Window->OnUpdate();
 		}
