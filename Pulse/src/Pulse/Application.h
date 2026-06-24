@@ -5,6 +5,7 @@
 #include "Pulse/Window.h"
 #include "Pulse/Layer.h"
 #include "Pulse/LayerStack.h"
+#include "Pulse/Imgui/ImguiLayer.h"
 
 namespace Pulse {
 
@@ -13,6 +14,7 @@ namespace Pulse {
 	private:
 		static Application* s_Instance;
 		std::unique_ptr<Window> m_Window;
+		ImguiLayer* m_ImguiLayer;
 		bool m_IsRunning = true;
 		LayerStack m_LayerStack;
 

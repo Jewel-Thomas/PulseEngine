@@ -176,8 +176,6 @@
     <ClInclude Include="src\Pulse\LayerStack.h" />
     <ClInclude Include="src\Pulse\Logger.h" />
     <ClInclude Include="src\Pulse\MouseButtonCodes.h" />
-    <ClInclude Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.h" />
-    <ClInclude Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Pulse\Window.h" />
@@ -604,12 +602,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp" />
+    <ClCompile Include="src\Pulse\Imgui\ImguiBuild.cpp" />
     <ClCompile Include="src\Pulse\Imgui\ImguiLayer.cpp" />
     <ClCompile Include="src\Pulse\Layer.cpp" />
     <ClCompile Include="src\Pulse\LayerStack.cpp" />
     <ClCompile Include="src\Pulse\Logger.cpp" />
-    <ClCompile Include="src\Pulse\Platform\ImguiGLFW\imgui_impl_glfw.cpp" />
-    <ClCompile Include="src\Pulse\Platform\OpenGL\ImguiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\plspch.cpp">
