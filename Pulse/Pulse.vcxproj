@@ -170,6 +170,7 @@
     <ClInclude Include="src\Pulse\Events\KeyEvent.h" />
     <ClInclude Include="src\Pulse\Events\MouseEvent.h" />
     <ClInclude Include="src\Pulse\Imgui\ImguiLayer.h" />
+    <ClInclude Include="src\Pulse\Imgui\PulseImGui.h" />
     <ClInclude Include="src\Pulse\Input.h" />
     <ClInclude Include="src\Pulse\KeyCodes.h" />
     <ClInclude Include="src\Pulse\Layer.h" />
@@ -604,6 +605,7 @@
     <ClCompile Include="src\Pulse\Application.cpp" />
     <ClCompile Include="src\Pulse\Imgui\ImguiBuild.cpp" />
     <ClCompile Include="src\Pulse\Imgui\ImguiLayer.cpp" />
+    <ClCompile Include="src\Pulse\Imgui\PulseImGui.cpp" />
     <ClCompile Include="src\Pulse\Layer.cpp" />
     <ClCompile Include="src\Pulse\LayerStack.cpp" />
     <ClCompile Include="src\Pulse\Logger.cpp" />

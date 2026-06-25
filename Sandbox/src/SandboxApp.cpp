@@ -1,6 +1,7 @@
 #include "plspch.h"
 #include <Pulse.h>
 
+#include "imgui.h"
 
 class ExampleLayer : public Pulse::Layer
 {
@@ -10,7 +11,7 @@ public:
 	{
 	}
 
-	void OnUpdate() override
+	virtual void OnUpdate() override
 	{
 		if (Pulse::Input::IsKeyPressed(PLS_KEY_SPACE))
 		{
@@ -18,7 +19,17 @@ public:
 		}
 	}
 
-	void OnEvent(Pulse::Event& event) override
+	virtual void OnImguiRender() override
+	{
+		ImGuiContext* imGuiContext = Pulse::PulseImGui::GetImGuiContextFromPulse();
+		ImGui::SetCurrentContext(imGuiContext);
+
+		ImGui::Begin("Test");
+		ImGui::Text("Hello From Example!");
+		ImGui::End();
+	}
+
+	virtual void OnEvent(Pulse::Event& event) override
 	{
 		if (event.GetEventType() == Pulse::EventType::MouseButtonPressed)
 		{
