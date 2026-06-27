@@ -116,12 +116,14 @@ project "Sandbox"
 	{
 		"Pulse/vendor/spdlog/include",
 		"Pulse/src",
-		"%{IncludeDirs.glm}"
+		"%{IncludeDirs.glm}",
+		"%{IncludeDirs.Imgui}"
 	}
 
 	links
 	{
-		"Pulse"
+		"Pulse",
+		"ImGui"
 	}
 
 	filter "system:windows"

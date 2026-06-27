@@ -16,12 +16,6 @@
     <Filter Include="src\Pulse\Platform">
       <UniqueIdentifier>{B9C3F5F7-A5A7-B64D-0E08-B1A0FA0AA1CF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Pulse\Platform\ImguiGLFW">
-      <UniqueIdentifier>{D34CE7CA-BF07-D776-68BF-4FC154592107}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Pulse\Platform\OpenGL">
-      <UniqueIdentifier>{CDE26B95-39A5-9F1F-8255-2EACEE5678FD}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Pulse\Platform\Windows">
       <UniqueIdentifier>{F316049B-DF26-B06B-48E0-148A340F9F04}</UniqueIdentifier>
     </Filter>
@@ -1362,10 +1356,14 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pulse\Imgui\PulseImGui.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">
       <Filter>src\Pulse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pulse\Imgui\ImguiBuild.cpp">
+      <Filter>src\Pulse\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\Pulse\Imgui\ImguiLayer.cpp">
       <Filter>src\Pulse\Imgui</Filter>
@@ -1388,6 +1386,6 @@
     <ClCompile Include="src\plspch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Pulse\Imgui\ImguiBuild.cpp" />
+    <ClCompile Include="src\Pulse\Imgui\PulseImGui.cpp" />
   </ItemGroup>
 </Project>

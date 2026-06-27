@@ -70,7 +70,8 @@ namespace Pulse {
     void ImguiLayer::OnImguiRender()
     {
         static bool show = true;
-        ImGui::ShowDemoWindow(&show);
+        if(show)
+            ImGui::ShowDemoWindow(&show);
     }
 
     void ImguiLayer::OnEnd()
