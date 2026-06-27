@@ -1,8 +1,6 @@
 #include "plspch.h"
 #include <Pulse.h>
 
-#include "imgui.h"
-
 class ExampleLayer : public Pulse::Layer
 {
 public:
@@ -21,9 +19,6 @@ public:
 
 	virtual void OnImguiRender() override
 	{
-		ImGuiContext* imGuiContext = Pulse::PulseImGui::GetImGuiContextFromPulse();
-		ImGui::SetCurrentContext(imGuiContext);
-
 		ImGui::Begin("Test");
 		ImGui::Text("Hello From Example!");
 		ImGui::End();
