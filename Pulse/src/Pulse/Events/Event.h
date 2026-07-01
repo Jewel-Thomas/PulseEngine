@@ -35,7 +35,7 @@ namespace Pulse {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class Pulse_API Event
+	class Event
 	{
 	public:
 		bool m_Handled = false;

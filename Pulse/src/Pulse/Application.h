@@ -9,7 +9,7 @@
 
 namespace Pulse {
 
-	class Pulse_API Application
+	class Application
 	{
 	private:
 		static Application* s_Instance;

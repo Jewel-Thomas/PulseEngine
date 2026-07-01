@@ -7,7 +7,7 @@
 
 namespace Pulse {
 
-	class Pulse_API ImguiLayer : public Layer
+	class ImguiLayer : public Layer
 	{
 	private:
 		float m_Time = 0.0f;

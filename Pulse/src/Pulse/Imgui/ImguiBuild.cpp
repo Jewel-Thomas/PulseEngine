@@ -1,5 +1,4 @@
 #include "plspch.h"
-
 #include "glad/glad.h"
 
 #define IMGUI_IMPL_OPENGL_LOADER_CUSTOM

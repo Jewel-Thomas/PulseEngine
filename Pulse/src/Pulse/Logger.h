@@ -5,7 +5,7 @@
 
 namespace Pulse {
 
-	class Pulse_API Logger
+	class Logger
 	{
 	private:
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;

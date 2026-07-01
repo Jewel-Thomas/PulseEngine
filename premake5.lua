@@ -24,7 +24,7 @@ include "Pulse/vendor/imgui"
 
 project "Pulse"
 	location "Pulse"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
 	staticruntime "off"
 
@@ -68,9 +68,7 @@ project "Pulse"
 		defines
 		{
 			"PLS_PLATFORM_WINDOWS",
-			"PLS_BUILD_DLL",
-			"GLFW_INCLUDE_NONE",
-			"IMGUI_IMPL_OPENGL_LOADER_CUSTOM"
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

@@ -20,7 +20,7 @@ namespace Pulse {
 	};
 
 	// TODO: Include the input handling as well
-	class Pulse_API Window
+	class Window
 	{
 	public:
 
