@@ -17,7 +17,7 @@ namespace Pulse {
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouseButton)
 	};
 
-	class Pulse_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 
@@ -34,7 +34,7 @@ namespace Pulse {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class Pulse_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 
@@ -51,7 +51,7 @@ namespace Pulse {
 		EVENT_CLASS_TYPE(MouseButtonReleased)
 	};
 
-	class Pulse_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	private:
 		float m_MouseX, m_MouseY;
@@ -76,7 +76,7 @@ namespace Pulse {
 		EVENT_CLASS_TYPE(MouseMoved)
 	};
 
-	class Pulse_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	private:
 		float m_OffsetX, m_OffsetY;

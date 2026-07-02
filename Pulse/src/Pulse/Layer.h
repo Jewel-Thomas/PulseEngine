@@ -5,7 +5,7 @@
 
 namespace Pulse {
 
-	class Pulse_API Layer
+	class Layer
 	{
 	protected:
 		std::string m_DebugName;

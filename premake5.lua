@@ -1,32 +1,33 @@
 workspace "Pulse"
 	architecture "x64"
-
+	
 	configurations
 	{
 		"Debug",
 		"Release",
 		"Dist"
 	}
-
+	
 	startproject "Sandbox"
-
-outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
-IncludeDirs = {}
-IncludeDirs["GLFW"] = "Pulse/vendor/GLFW/include" 
-IncludeDirs["Glad"] = "Pulse/vendor/Glad/include"
-IncludeDirs["Imgui"] = "Pulse/vendor/imgui"
-IncludeDirs["glm"] = "Pulse/vendor/glm"
-
-include "Pulse/vendor/GLFW"
-include "Pulse/vendor/Glad"
-include "Pulse/vendor/imgui"
-
+	
+	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+	
+	IncludeDirs = {}
+	IncludeDirs["GLFW"] = "Pulse/vendor/GLFW/include" 
+	IncludeDirs["Glad"] = "Pulse/vendor/Glad/include"
+	IncludeDirs["Imgui"] = "Pulse/vendor/imgui"
+	IncludeDirs["glm"] = "Pulse/vendor/glm"
+	
+	include "Pulse/vendor/GLFW"
+	include "Pulse/vendor/Glad"
+	include "Pulse/vendor/imgui"
+	
 project "Pulse"
 	location "Pulse"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" ..outputdir.. "/%{prj.name}")
 	objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
@@ -60,22 +61,19 @@ project "Pulse"
 		"ImGui"
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 		buildoptions { "/utf-8" }
 
 		defines
 		{
 			"PLS_PLATFORM_WINDOWS",
-			"PLS_BUILD_DLL",
-			"GLFW_INCLUDE_NONE",
-			"IMGUI_IMPL_OPENGL_LOADER_CUSTOM"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
+			"GLFW_INCLUDE_NONE"
 		}
 	
 	filter "configurations:Debug"
@@ -85,23 +83,24 @@ project "Pulse"
 			"PLS_ENABLE_ASSERTS"
 		}
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "PLS_RELEASE_BUILD"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "PLS_DIST_BUILD"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
+	cppdialect "C++17"
 
 	targetdir ("bin/" ..outputdir.. "/%{prj.name}")
 	objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
@@ -127,7 +126,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 		buildoptions { "/utf-8" }
 
@@ -139,14 +137,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "PLS_DEBUG_BUILD"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "PLS_RELEASE_BUILD"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "PLS_DIST_BUILD"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

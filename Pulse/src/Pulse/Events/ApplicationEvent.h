@@ -3,7 +3,7 @@
 
 namespace Pulse {
 
-	class Pulse_API WindowResizeEvent : public Event
+	class WindowResizeEvent : public Event
 	{
 	private:
 		unsigned int m_Width, m_Height;
@@ -28,7 +28,7 @@ namespace Pulse {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class Pulse_API WindowCloseEvent : public Event
+	class WindowCloseEvent : public Event
 	{
 	public:
 		WindowCloseEvent() {}
@@ -38,7 +38,7 @@ namespace Pulse {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class Pulse_API AppTickEvent : public Event
+	class AppTickEvent : public Event
 	{
 	public:
 		AppTickEvent() {}
@@ -48,7 +48,7 @@ namespace Pulse {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class Pulse_API AppUpdateEvent : public Event
+	class AppUpdateEvent : public Event
 	{
 	public:
 		AppUpdateEvent() {}
@@ -58,7 +58,7 @@ namespace Pulse {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class Pulse_API AppRenderEvent : public Event
+	class AppRenderEvent : public Event
 	{
 	public:
 		AppRenderEvent() {}

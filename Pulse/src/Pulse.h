@@ -8,7 +8,6 @@
 
 // Imgui
 #include "Pulse/Imgui/ImguiLayer.h"
-#include "Pulse/Imgui/PulseImGui.h"
 
 // Input
 #include "Pulse/Input.h"

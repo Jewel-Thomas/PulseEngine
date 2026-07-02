@@ -22,7 +22,7 @@ namespace Pulse {
 
 	};
 
-	class Pulse_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	private:
 
@@ -46,7 +46,7 @@ namespace Pulse {
 
 	};
 
-	class Pulse_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 
@@ -63,7 +63,7 @@ namespace Pulse {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class Pulse_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 

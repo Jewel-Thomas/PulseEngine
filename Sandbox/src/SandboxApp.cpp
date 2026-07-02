@@ -1,5 +1,6 @@
 #include "plspch.h"
 #include <Pulse.h>
+#include <imgui.h>
 
 class ExampleLayer : public Pulse::Layer
 {
