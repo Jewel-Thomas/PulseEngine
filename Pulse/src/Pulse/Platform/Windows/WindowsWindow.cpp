@@ -3,8 +3,7 @@
 #include "Pulse/Events/ApplicationEvent.h"
 #include "Pulse/Events/KeyEvent.h"
 #include "Pulse/Events/MouseEvent.h"
-
-#include <glad/glad.h>
+#include "Pulse/Platform/OpenGL/OpenGLContext.h"
 
 namespace Pulse {
 
@@ -28,7 +27,7 @@ namespace Pulse {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
@@ -57,9 +56,10 @@ namespace Pulse {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		PLS_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVsync(true);
 
