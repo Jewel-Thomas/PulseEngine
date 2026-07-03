@@ -1,5 +1,6 @@
 #pragma once
 #include "Pulse/Window.h"
+#include "Pulse/Renderer/GraphicsContext.h"
 #include <GLFW/glfw3.h>
 
 namespace Pulse {
@@ -41,6 +42,7 @@ namespace Pulse {
 		};
 
 		WindowData m_Data;
+		GraphicsContext* m_Context;
 	};
 
 }

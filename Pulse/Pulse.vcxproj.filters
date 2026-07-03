@@ -1356,6 +1356,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pulse\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">
@@ -1385,5 +1387,6 @@
     <ClCompile Include="src\plspch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>
