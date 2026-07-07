@@ -17,6 +17,10 @@ namespace Pulse {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		PLS_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		PLS_CORE_INFO("Graphics Vendor : {0}", (const char*)glGetString(GL_VENDOR));
+		PLS_CORE_INFO("Renderer : {0}", (const char*)glGetString(GL_RENDERER));
+		PLS_CORE_INFO("Version : {0}", (const char*)glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()
