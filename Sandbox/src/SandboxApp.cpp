@@ -19,10 +19,8 @@ public:
 	}
 
 	virtual void OnImguiRender() override
-	{
-		ImGui::Begin("Test");
-		ImGui::Text("Hello From Example!");
-		ImGui::End();
+	{	
+
 	}
 
 	virtual void OnEvent(Pulse::Event& event) override
