@@ -1358,6 +1358,7 @@
     </ClInclude>
     <ClInclude Include="src\Pulse\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Pulse\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">
@@ -1388,5 +1389,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Pulse\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>
