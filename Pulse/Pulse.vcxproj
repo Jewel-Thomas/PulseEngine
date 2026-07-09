@@ -171,6 +171,7 @@
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Pulse\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Pulse\Renderer\Shader.h" />
     <ClInclude Include="src\Pulse\Window.h" />
     <ClInclude Include="src\plspch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -606,6 +607,7 @@
     <ClCompile Include="src\plspch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Pulse\Renderer\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
