@@ -9,6 +9,7 @@
 
 #include "Pulse/Renderer/Shader.h"
 #include "Pulse/Renderer/Buffer.h"
+#include "Pulse/Renderer/ShaderSrc.h"
 
 namespace Pulse {
 
