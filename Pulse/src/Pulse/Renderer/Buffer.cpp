@@ -19,4 +19,18 @@ namespace Pulse {
 		return nullptr;
 	}
 
+	IndexBuffer* IndexBuffer::Create(unsigned int* indices, uint32_t count)
+	{
+		switch (Renderer::GetAPI())
+		{
+			case RendererAPI::None:
+				PLS_CORE_ASSERT(false, "Renderer API 'None' is not supported yet"); return nullptr;
+			case RendererAPI::OpenGL:
+				return new OpenGLIndexBuffer(indices, count);
+		}
+
+		PLS_CORE_ASSERT(false, "This Renderer API is not currently supported, try other Renderer APIs");
+		return nullptr;
+	}
+
 }
