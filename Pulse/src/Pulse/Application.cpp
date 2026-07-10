@@ -25,9 +25,6 @@ namespace Pulse {
 		glGenVertexArrays(1, &m_VertexArray);
 		glBindVertexArray(m_VertexArray);
 
-		// Vertex Buffer
-		glGenBuffers(1, &m_VertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 
 		float vertices[4 * 3] = {
 			-0.5f, -0.5f, 0.0f,
@@ -36,7 +33,14 @@ namespace Pulse {
 			 0.5f, -0.5f, 0.0f
 		};
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		// Vertex Buffer
+		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		m_VertexBuffer->Bind();
+
+		//glGenBuffers(1, &m_VertexBuffer);
+		//glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+
+		//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
