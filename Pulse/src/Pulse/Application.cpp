@@ -21,8 +21,6 @@ namespace Pulse {
 		m_ImguiLayer = new ImguiLayer();
 		PushOverlay(m_ImguiLayer);
 
-
-
 		float vertices[4 * 3] = {
 			-0.5f, -0.5f, 0.0f,
 			-0.5f,  0.5f, 0.0f,
@@ -36,8 +34,7 @@ namespace Pulse {
 		// Vertex Buffer
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		m_VertexArray->SetVertexAttribPointer(0, 3, PLSType::Float, GL_FALSE, 3 * sizeof(float), nullptr);
 
 		// Index Buffer
 		unsigned int indices[6] = { 0, 1, 2, 2, 3, 0 };
