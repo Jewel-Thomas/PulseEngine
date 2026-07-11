@@ -7,8 +7,9 @@
 #include "Pulse/LayerStack.h"
 #include "Pulse/Imgui/ImguiLayer.h"
 
-#include "Pulse/Renderer/Shader.h"
+#include "Pulse/Renderer/VertexArray.h"
 #include "Pulse/Renderer/Buffer.h"
+#include "Pulse/Renderer/Shader.h"
 #include "Pulse/Renderer/ShaderSrc.h"
 
 namespace Pulse {
@@ -21,10 +22,10 @@ namespace Pulse {
 		ImguiLayer* m_ImguiLayer;
 		bool m_IsRunning = true;
 		LayerStack m_LayerStack;
-		unsigned int m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexArray> m_VertexArray;
 		std::unique_ptr<VertexBuffer> m_VertexBuffer;
 		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 
 	public:
 		Application();
