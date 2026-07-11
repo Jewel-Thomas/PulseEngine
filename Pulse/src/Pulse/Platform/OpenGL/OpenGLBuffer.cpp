@@ -5,7 +5,7 @@
 
 namespace Pulse {
 
-	Pulse::OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
+	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
@@ -17,12 +17,12 @@ namespace Pulse {
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
-	void Pulse::OpenGLVertexBuffer::Bind() const
+	void OpenGLVertexBuffer::Bind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 	}
 
-	void Pulse::OpenGLVertexBuffer::Unbind() const
+	void OpenGLVertexBuffer::Unbind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}

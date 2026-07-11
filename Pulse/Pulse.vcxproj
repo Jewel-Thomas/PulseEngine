@@ -170,6 +170,7 @@
     <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Pulse\Renderer\Buffer.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="src\Pulse\Renderer\Renderer.h" />
     <ClInclude Include="src\Pulse\Renderer\Shader.h" />
     <ClInclude Include="src\Pulse\Renderer\ShaderSrc.h" />
+    <ClInclude Include="src\Pulse\Renderer\VertexArray.h" />
     <ClInclude Include="src\Pulse\Window.h" />
     <ClInclude Include="src\plspch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -609,6 +611,7 @@
     <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\plspch.cpp">
@@ -617,6 +620,7 @@
     <ClCompile Include="src\Pulse\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Pulse\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Pulse\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Pulse\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

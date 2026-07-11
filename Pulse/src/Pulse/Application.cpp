@@ -21,11 +21,6 @@ namespace Pulse {
 		m_ImguiLayer = new ImguiLayer();
 		PushOverlay(m_ImguiLayer);
 
-		// Vertex Array
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
-
-
 		float vertices[4 * 3] = {
 			-0.5f, -0.5f, 0.0f,
 			-0.5f,  0.5f, 0.0f,
@@ -33,18 +28,18 @@ namespace Pulse {
 			 0.5f, -0.5f, 0.0f
 		};
 
+		// Vertex Array
+		m_VertexArray.reset(VertexArray::Create());
+
 		// Vertex Buffer
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		m_VertexBuffer->Bind();
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		m_VertexArray->SetVertexAttribPointer(0, 3, PLSType::Float, GL_FALSE, 3 * sizeof(float), nullptr);
 
 		// Index Buffer
 		unsigned int indices[6] = { 0, 1, 2, 2, 3, 0 };
 
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(indices[0])));
-		m_IndexBuffer->Bind();
 
 		// Custom Shader
 		m_Shader.reset(Shader::Create(ShaderSrc::VertexSrc, ShaderSrc::FragmentSrc));
@@ -88,7 +83,7 @@ namespace Pulse {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
+			m_VertexArray->Bind();
 			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr); // nullptr implicitly gets converted to 0th byte
 
 			for (auto layer : m_LayerStack)
