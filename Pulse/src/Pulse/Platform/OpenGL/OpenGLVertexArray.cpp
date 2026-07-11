@@ -27,7 +27,7 @@ namespace Pulse {
 		glBindVertexArray(0);
 	}
 
-	static GLenum PLSTypeToOpenGLType(PLSType type)
+	static GLenum PLSTypeToGLType(PLSType type)
 	{
 		switch (type)
 		{
@@ -42,11 +42,10 @@ namespace Pulse {
 
 	void OpenGLVertexArray::SetVertexAttribPointer(uint32_t index, uint32_t count, PLSType type, bool normalized, uint32_t stride, const void* offset)
 	{
-		GLenum glType = PLSTypeToOpenGLType(type);
+		GLenum glType = PLSTypeToGLType(type);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(index, count, glType, GL_FALSE, count * sizeof(float), nullptr);
 	}
-
 
 }
 
