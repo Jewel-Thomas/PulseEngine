@@ -1,14 +1,8 @@
 #pragma once
+#include "Shader.h"
 
 
 namespace Pulse {
-
-	enum class PLSType
-	{
-		Float,
-		Int,
-		Bool
-	};
 
 	class VertexArray
 	{
