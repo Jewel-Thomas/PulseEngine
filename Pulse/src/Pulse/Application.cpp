@@ -21,11 +21,11 @@ namespace Pulse {
 		m_ImguiLayer = new ImguiLayer();
 		PushOverlay(m_ImguiLayer);
 
-		float vertices[4 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f
+		float vertices[4 * 7] = {
+			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+			 0.5f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
+			 0.5f, -0.5f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f
 		};
 
 		// Vertex Array
@@ -34,7 +34,23 @@ namespace Pulse {
 		// Vertex Buffer
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
-		m_VertexArray->SetVertexAttribPointer(0, 3, PLSType::Float, GL_FALSE, 3 * sizeof(float), nullptr);
+		BufferLayout layout = {
+			{ "a_Position", PLSType::Float3, false},
+			{ "a_Color", PLSType::Float4 }
+		};
+
+		int index = 0;
+		for (auto& element : layout)
+		{
+			m_VertexArray->SetVertexAttribPointer(index, 
+											      element.GetComponentCount(), 
+												  element.Type, 
+												  element.Normalized, 
+											      layout.GetStride(), 
+												  (const void*)element.Offset);
+			index++;
+		}
+
 
 		// Index Buffer
 		unsigned int indices[6] = { 0, 1, 2, 2, 3, 0 };

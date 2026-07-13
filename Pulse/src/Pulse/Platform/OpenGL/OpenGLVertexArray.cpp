@@ -32,7 +32,13 @@ namespace Pulse {
 		switch (type)
 		{
 			case PLSType::Float: return GL_FLOAT;
+			case PLSType::Float2: return GL_FLOAT;
+			case PLSType::Float3: return GL_FLOAT;
+			case PLSType::Float4: return GL_FLOAT;
 			case PLSType::Int:   return GL_INT;
+			case PLSType::Int2:   return GL_INT;
+			case PLSType::Int3:   return GL_INT;
+			case PLSType::Int4:   return GL_INT;
 			case PLSType::Bool:  return GL_BOOL;
 		}
 
@@ -43,8 +49,13 @@ namespace Pulse {
 	void OpenGLVertexArray::SetVertexAttribPointer(uint32_t index, uint32_t count, PLSType type, bool normalized, uint32_t stride, const void* offset)
 	{
 		GLenum glType = PLSTypeToGLType(type);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(index, count, glType, GL_FALSE, count * sizeof(float), nullptr);
+		glEnableVertexAttribArray(index);
+		glVertexAttribPointer(index, 
+			count, 
+			glType, 
+			normalized, 
+			stride,
+			offset);
 	}
 
 }
