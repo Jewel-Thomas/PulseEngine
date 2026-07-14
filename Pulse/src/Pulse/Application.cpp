@@ -34,13 +34,16 @@ namespace Pulse {
 		// Vertex Buffer
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
+
 		BufferLayout layout = {
 			{ "a_Position", PLSType::Float3, false},
 			{ "a_Color", PLSType::Float4 }
 		};
 
+		m_VertexBuffer->SetLayout(layout);
+
 		int index = 0;
-		for (auto& element : layout)
+		for (const auto& element : layout)
 		{
 			m_VertexArray->SetVertexAttribPointer(index, 
 											      element.GetComponentCount(), 
