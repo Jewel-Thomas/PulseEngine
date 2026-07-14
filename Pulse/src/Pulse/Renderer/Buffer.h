@@ -20,7 +20,7 @@ namespace Pulse {
 		{
 		}
 
-		uint32_t GetSizeFromPLSType(PLSType type)
+		uint32_t GetSizeFromPLSType(PLSType type) const
 		{
 			switch (type)
 			{
@@ -41,7 +41,7 @@ namespace Pulse {
 			return 0;
 		}
 
-		uint32_t GetComponentCount()
+		uint32_t GetComponentCount() const
 		{
 			switch (Type)
 			{
@@ -70,6 +70,8 @@ namespace Pulse {
 		uint32_t m_Stride = 0;
 
 	public:
+		BufferLayout() = default;
+
 		BufferLayout(std::initializer_list<BufferElement> layout)
 			: m_Layout(layout)
 		{
@@ -93,15 +95,23 @@ namespace Pulse {
 		inline std::vector<BufferElement>::iterator begin() { return m_Layout.begin(); }
 		inline std::vector<BufferElement>::iterator end() { return m_Layout.end(); }
 
+		inline std::vector<BufferElement>::const_iterator begin() const { return m_Layout.begin(); }
+		inline std::vector<BufferElement>::const_iterator end() const { return m_Layout.end(); }
+
 	};
 
 	class VertexBuffer
 	{
+	private:
+		BufferLayout m_Layout;
 	public:
 		virtual ~VertexBuffer() = default;
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
+
+		inline void SetLayout(const BufferLayout& layout) { m_Layout = layout; }
+		inline const BufferLayout& GetLayout() const { return m_Layout; }
 
 		static VertexBuffer* Create(float* vertices, uint32_t size);
 	};
