@@ -22,17 +22,18 @@ namespace Pulse {
 		PushOverlay(m_ImguiLayer);
 
 		float vertices[4 * 7] = {
-			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
-			 0.5f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f
+			-0.75f, -0.75f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+			-0.75f,  0.75f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+			 0.75f,  0.75f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
+			 0.75f, -0.75f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f
 		};
 
 		// Vertex Array
 		m_VertexArray.reset(VertexArray::Create());
 
 		// Vertex Buffer
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		std::shared_ptr<VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
 
 		BufferLayout layout = {
@@ -40,28 +41,54 @@ namespace Pulse {
 			{ "a_Color", PLSType::Float4 }
 		};
 
-		m_VertexBuffer->SetLayout(layout);
-
-		int index = 0;
-		for (const auto& element : layout)
-		{
-			m_VertexArray->SetVertexAttribPointer(index, 
-											      element.GetComponentCount(), 
-												  element.Type, 
-												  element.Normalized, 
-											      layout.GetStride(), 
-												  (const void*)element.Offset);
-			index++;
-		}
-
+		vertexBuffer->SetLayout(layout);
+		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		// Index Buffer
 		unsigned int indices[6] = { 0, 1, 2, 2, 3, 0 };
+		std::shared_ptr<IndexBuffer> indexBuffer;
+		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(indices[0])));
 
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(indices[0])));
+		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		// Custom Shader
-		m_Shader.reset(Shader::Create(ShaderSrc::VertexSrc, ShaderSrc::FragmentSrc));
+		m_Shader.reset(Shader::Create(ShaderSrc::SquareVertexSrc, ShaderSrc::SquareFragmentSrc));
+
+
+
+
+		// Second Shape
+
+		float triangleVertices[3 * 3] = {
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.0f,  0.5f, 0.0f
+		};
+
+		// Vertex Array
+		m_TriangleVertexArray.reset(VertexArray::Create());
+
+		// Vertex Buffer
+		std::shared_ptr<VertexBuffer> triangleVertexBuffer;
+		triangleVertexBuffer.reset(VertexBuffer::Create(triangleVertices, sizeof(triangleVertices)));
+
+
+		BufferLayout triangleBufferLayout = {
+			{ "a_Position", PLSType::Float3, false}
+		};
+
+		triangleVertexBuffer->SetLayout(triangleBufferLayout);
+		m_TriangleVertexArray->AddVertexBuffer(triangleVertexBuffer);
+
+		// Index Buffer
+		unsigned int triangleIndices[3] = { 0, 1, 2 };
+		std::shared_ptr<IndexBuffer> triangleIndexBuffer;
+		triangleIndexBuffer.reset(IndexBuffer::Create(triangleIndices, sizeof(triangleIndices) / sizeof(triangleIndices[0])));
+
+		m_TriangleVertexArray->SetIndexBuffer(triangleIndexBuffer);
+
+		// Custom Shader
+		m_TriangleShader.reset(Shader::Create(ShaderSrc::TriangleVertexSrc, ShaderSrc::TriangleFragmentSrc));
 	}
 
 	Application::~Application()
@@ -103,7 +130,11 @@ namespace Pulse {
 
 			m_Shader->Bind();
 			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr); // nullptr implicitly gets converted to 0th byte
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr); // nullptr implicitly gets converted to 0th byte
+
+			m_TriangleShader->Bind();
+			m_TriangleVertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_TriangleVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr); // nullptr implicitly gets converted to 0th byte
 
 			for (auto layer : m_LayerStack)
 			{

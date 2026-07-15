@@ -27,6 +27,7 @@ namespace Pulse {
 		glBindVertexArray(0);
 	}
 
+
 	static GLenum PLSTypeToGLType(PLSType type)
 	{
 		switch (type)
@@ -46,16 +47,38 @@ namespace Pulse {
 		return 0;
 	}
 
-	void OpenGLVertexArray::SetVertexAttribPointer(uint32_t index, uint32_t count, PLSType type, bool normalized, uint32_t stride, const void* offset)
+	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
 	{
-		GLenum glType = PLSTypeToGLType(type);
-		glEnableVertexAttribArray(index);
-		glVertexAttribPointer(index, 
-			count, 
-			glType, 
-			normalized, 
-			stride,
-			offset);
+		PLS_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer Layout was not set!");
+
+		glBindVertexArray(m_RendererID);
+		vertexBuffer->Bind();
+
+		int index = 0;
+		const auto& layout = vertexBuffer->GetLayout();
+		for (const auto& element : layout)
+		{
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(index,
+				element.GetComponentCount(),
+				PLSTypeToGLType(element.Type),
+				element.Normalized ? GL_TRUE : GL_FALSE,
+				layout.GetStride(),
+				(const void*)element.Offset);
+
+			index++;
+		}
+
+
+		m_VertexBuffers.push_back(vertexBuffer);
+	}
+
+	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
+	{
+		glBindVertexArray(m_RendererID);
+		indexBuffer->Bind();
+
+		m_IndexBuffer = indexBuffer;
 	}
 
 }

@@ -91,10 +91,10 @@ namespace Pulse {
 		}
 
 		inline uint32_t GetStride() const { return m_Stride; }
+		inline const std::vector<BufferElement>& GetElements() const { return m_Layout; }
 
 		inline std::vector<BufferElement>::iterator begin() { return m_Layout.begin(); }
 		inline std::vector<BufferElement>::iterator end() { return m_Layout.end(); }
-
 		inline std::vector<BufferElement>::const_iterator begin() const { return m_Layout.begin(); }
 		inline std::vector<BufferElement>::const_iterator end() const { return m_Layout.end(); }
 

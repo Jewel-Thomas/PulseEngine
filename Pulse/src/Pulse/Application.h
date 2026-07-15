@@ -22,10 +22,10 @@ namespace Pulse {
 		ImguiLayer* m_ImguiLayer;
 		bool m_IsRunning = true;
 		LayerStack m_LayerStack;
-		std::unique_ptr<VertexArray> m_VertexArray;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
-		std::unique_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+		std::shared_ptr<VertexArray> m_TriangleVertexArray;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<Shader> m_TriangleShader;
 
 	public:
 		Application();
