@@ -4,7 +4,8 @@
 
 namespace Pulse::ShaderSrc {
 
-	static inline const std::string VertexSrc = R"(
+	// Square Shaders
+	static inline const std::string SquareVertexSrc = R"(
 			
 				#version 330 core
 				layout(location = 0) in vec3 a_Position;
@@ -22,7 +23,7 @@ namespace Pulse::ShaderSrc {
 		
 			)";
 
-	static inline const std::string FragmentSrc = R"(
+	static inline const std::string SquareFragmentSrc = R"(
 			
 				#version 330 core
 				layout(location = 0) out vec4 color;
@@ -33,6 +34,34 @@ namespace Pulse::ShaderSrc {
 				void main()
 				{
 					color = v_Color;   
+				}
+
+			)";
+
+	// Triangle Shaders
+	static inline const std::string TriangleVertexSrc = R"(
+				#version 330 core
+				layout(location = 0) in vec3 a_Position;
+				
+				out vec3 v_Position;				
+
+				void main()
+				{
+					v_Position = a_Position;
+					gl_Position = vec4(a_Position, 1.0f);
+				}
+
+			)";
+
+	static inline const std::string TriangleFragmentSrc = R"(
+				#version 330 core
+				layout(location = 0) out vec4 color;
+				
+				in vec3 v_Position;				
+
+				void main()
+				{
+					color = vec4(v_Position * 0.5f + 0.5f, 1.0f);
 				}
 
 			)";

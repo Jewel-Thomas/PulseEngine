@@ -1,18 +1,28 @@
 #pragma once
 #include "Shader.h"
+#include "Buffer.h"
+
+#include <memory>
 
 
 namespace Pulse {
 
 	class VertexArray
 	{
+	protected:
+		std::vector<std::shared_ptr<VertexBuffer>> m_VertexBuffers;
+		std::shared_ptr<IndexBuffer> m_IndexBuffer;
+
 	public:
 		virtual ~VertexArray() = default;
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
+		virtual void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer) = 0;
+		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer) = 0;
 
-		virtual void SetVertexAttribPointer(uint32_t index, uint32_t count, PLSType type, bool normalized, uint32_t stride, const void* offset) = 0;
+		inline const std::vector<std::shared_ptr<VertexBuffer>>& GetVertexBuffers() const { return m_VertexBuffers; }
+		inline const std::shared_ptr<IndexBuffer>& GetIndexBuffer() const { return m_IndexBuffer; }
 
 		static VertexArray* Create();
 	};
