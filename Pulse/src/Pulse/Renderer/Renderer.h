@@ -1,23 +1,19 @@
 #pragma once
-
+#include "RendererAPI.h"
+#include "VertexArray.h"
 
 
 namespace Pulse {
 
-	enum class RendererAPI
-	{
-		None = 0,
-		OpenGL = 1
-	};
-
 	class Renderer
 	{
-	private:
-		static RendererAPI s_RendererAPI;
-
 	public:
-		static inline RendererAPI GetAPI() { return  s_RendererAPI; }
+		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 
+		static void BeginScene();
+		static void EndScene();
+
+		static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
 	};
 
 }

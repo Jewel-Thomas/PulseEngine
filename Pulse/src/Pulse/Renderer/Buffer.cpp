@@ -9,9 +9,9 @@ namespace Pulse {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:
+			case RendererAPI::API::None:
 				PLS_CORE_ASSERT(false, "Renderer API 'None' is not supported yet"); return nullptr;
-			case RendererAPI::OpenGL:
+			case RendererAPI::API::OpenGL:
 				return new OpenGLVertexBuffer(vertices, size);
 		}
 
@@ -23,9 +23,9 @@ namespace Pulse {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:
+			case RendererAPI::API::None:
 				PLS_CORE_ASSERT(false, "Renderer API 'None' is not supported yet"); return nullptr;
-			case RendererAPI::OpenGL:
+			case RendererAPI::API::OpenGL:
 				return new OpenGLIndexBuffer(indices, count);
 		}
 
