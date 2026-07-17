@@ -3,6 +3,8 @@
 #include "Pulse/Logger.h"
 #include "glad/glad.h"
 #include "Input.h"
+#include "Pulse/Renderer/Renderer.h"
+#include "Pulse/Renderer/RenderCommand.h"
 
 namespace Pulse {
 
@@ -125,16 +127,18 @@ namespace Pulse {
 	{
 		while (m_IsRunning)
 		{
-			glClearColor(0.1, 0.1, 0.1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr); // nullptr implicitly gets converted to 0th byte
+			Renderer::Submit(m_VertexArray);
 
 			m_TriangleShader->Bind();
-			m_TriangleVertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_TriangleVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr); // nullptr implicitly gets converted to 0th byte
+			Renderer::Submit(m_TriangleVertexArray);
+
+			Renderer::EndScene();
 
 			for (auto layer : m_LayerStack)
 			{

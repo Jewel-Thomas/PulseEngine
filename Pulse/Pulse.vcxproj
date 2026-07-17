@@ -169,13 +169,16 @@
     <ClInclude Include="src\Pulse\MouseButtonCodes.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Pulse\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Pulse\Renderer\Buffer.h" />
     <ClInclude Include="src\Pulse\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Pulse\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Pulse\Renderer\Renderer.h" />
+    <ClInclude Include="src\Pulse\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Pulse\Renderer\Shader.h" />
     <ClInclude Include="src\Pulse\Renderer\ShaderSrc.h" />
     <ClInclude Include="src\Pulse\Renderer\VertexArray.h" />
@@ -610,6 +613,7 @@
     <ClCompile Include="src\Pulse\Logger.cpp" />
     <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Pulse\Platform\Windows\WindowsInput.cpp" />
@@ -618,7 +622,9 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Pulse\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Pulse\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Pulse\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Pulse\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Pulse\Renderer\Shader.cpp" />
     <ClCompile Include="src\Pulse\Renderer\VertexArray.cpp" />
   </ItemGroup>
