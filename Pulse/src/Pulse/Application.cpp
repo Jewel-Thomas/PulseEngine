@@ -1,7 +1,6 @@
 #include "plspch.h"
 #include "Application.h"
 #include "Pulse/Logger.h"
-#include "glad/glad.h"
 #include "Input.h"
 #include "Pulse/Renderer/Renderer.h"
 #include "Pulse/Renderer/RenderCommand.h"
