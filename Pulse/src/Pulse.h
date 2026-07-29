@@ -18,5 +18,10 @@
 #include "Pulse/EntryPoint.h"
 // ----------
 
-
+// Pulse Renderer
+#include "Pulse/Renderer/VertexArray.h"
+#include "Pulse/Renderer/Shader.h"
+#include "Pulse/Renderer/ShaderSrc.h"
+#include "Pulse/Renderer/Renderer.h"
+#include "Pulse/Renderer/RenderCommand.h"
 
