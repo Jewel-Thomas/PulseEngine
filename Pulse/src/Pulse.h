@@ -14,10 +14,6 @@
 #include "Pulse/KeyCodes.h"
 #include "Pulse/MouseButtonCodes.h"
 
-// EntryPoint
-#include "Pulse/EntryPoint.h"
-// ----------
-
 // Pulse Renderer
 #include "Pulse/Renderer/VertexArray.h"
 #include "Pulse/Renderer/Shader.h"
