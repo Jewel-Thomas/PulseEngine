@@ -2,8 +2,6 @@
 #include "Application.h"
 #include "Pulse/Logger.h"
 #include "Input.h"
-#include "Pulse/Renderer/Renderer.h"
-#include "Pulse/Renderer/RenderCommand.h"
 
 namespace Pulse {
 
@@ -21,75 +19,6 @@ namespace Pulse {
 
 		m_ImguiLayer = new ImguiLayer();
 		PushOverlay(m_ImguiLayer);
-
-		float vertices[4 * 7] = {
-			-0.75f, -0.75f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-			-0.75f,  0.75f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
-			 0.75f,  0.75f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-			 0.75f, -0.75f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f
-		};
-
-		// Vertex Array
-		m_VertexArray.reset(VertexArray::Create());
-
-		// Vertex Buffer
-		std::shared_ptr<VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-
-
-		BufferLayout layout = {
-			{ "a_Position", PLSType::Float3, false},
-			{ "a_Color", PLSType::Float4 }
-		};
-
-		vertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(vertexBuffer);
-
-		// Index Buffer
-		unsigned int indices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<IndexBuffer> indexBuffer;
-		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(indices[0])));
-
-		m_VertexArray->SetIndexBuffer(indexBuffer);
-
-		// Custom Shader
-		m_Shader.reset(Shader::Create(ShaderSrc::SquareVertexSrc, ShaderSrc::SquareFragmentSrc));
-
-
-
-
-		// Second Shape
-
-		float triangleVertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
-		};
-
-		// Vertex Array
-		m_TriangleVertexArray.reset(VertexArray::Create());
-
-		// Vertex Buffer
-		std::shared_ptr<VertexBuffer> triangleVertexBuffer;
-		triangleVertexBuffer.reset(VertexBuffer::Create(triangleVertices, sizeof(triangleVertices)));
-
-
-		BufferLayout triangleBufferLayout = {
-			{ "a_Position", PLSType::Float3, false}
-		};
-
-		triangleVertexBuffer->SetLayout(triangleBufferLayout);
-		m_TriangleVertexArray->AddVertexBuffer(triangleVertexBuffer);
-
-		// Index Buffer
-		unsigned int triangleIndices[3] = { 0, 1, 2 };
-		std::shared_ptr<IndexBuffer> triangleIndexBuffer;
-		triangleIndexBuffer.reset(IndexBuffer::Create(triangleIndices, sizeof(triangleIndices) / sizeof(triangleIndices[0])));
-
-		m_TriangleVertexArray->SetIndexBuffer(triangleIndexBuffer);
-
-		// Custom Shader
-		m_TriangleShader.reset(Shader::Create(ShaderSrc::TriangleVertexSrc, ShaderSrc::TriangleFragmentSrc));
 	}
 
 	Application::~Application()
@@ -126,19 +55,6 @@ namespace Pulse {
 	{
 		while (m_IsRunning)
 		{
-			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
-			RenderCommand::Clear();
-
-			Renderer::BeginScene();
-
-			m_Shader->Bind();
-			Renderer::Submit(m_VertexArray);
-
-			m_TriangleShader->Bind();
-			Renderer::Submit(m_TriangleVertexArray);
-
-			Renderer::EndScene();
-
 			for (auto layer : m_LayerStack)
 			{
 				layer->OnUpdate();

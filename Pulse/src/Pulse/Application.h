@@ -7,11 +7,6 @@
 #include "Pulse/LayerStack.h"
 #include "Pulse/Imgui/ImguiLayer.h"
 
-#include "Pulse/Renderer/VertexArray.h"
-#include "Pulse/Renderer/Buffer.h"
-#include "Pulse/Renderer/Shader.h"
-#include "Pulse/Renderer/ShaderSrc.h"
-
 namespace Pulse {
 
 	class Application
@@ -22,10 +17,6 @@ namespace Pulse {
 		ImguiLayer* m_ImguiLayer;
 		bool m_IsRunning = true;
 		LayerStack m_LayerStack;
-		std::shared_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<VertexArray> m_TriangleVertexArray;
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<Shader> m_TriangleShader;
 
 	public:
 		Application();
