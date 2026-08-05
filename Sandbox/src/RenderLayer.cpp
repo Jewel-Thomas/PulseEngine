@@ -36,12 +36,14 @@ void RenderLayer::OnAttach()
 	m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 	// Index Buffer
-	unsigned int indices[36] = { 0, 1, 2, 2, 3, 0, 
-								 4, 5, 6, 6, 7, 4, 
-								 6, 2, 3, 3, 7, 6, 
-								 1, 5, 4, 4, 0, 1, 
-								 1, 5, 6, 6, 2, 1, 
-								 0, 3, 7, 7, 4, 0 };
+	unsigned int indices[36] = { 
+		0, 1, 2, 2, 3, 0, 
+		4, 5, 6, 6, 7, 4, 
+		6, 2, 3, 3, 7, 6, 
+		1, 5, 4, 4, 0, 1, 
+		1, 5, 6, 6, 2, 1, 
+		0, 3, 7, 7, 4, 0 
+	};
 
 	std::shared_ptr<Pulse::IndexBuffer> indexBuffer;
 	indexBuffer.reset(Pulse::IndexBuffer::Create(indices, sizeof(indices) / sizeof(indices[0])));
@@ -58,6 +60,8 @@ void RenderLayer::OnUpdate()
 	Pulse::RenderCommand::Clear();
 
 	Pulse::Renderer::BeginScene();
+
+	// Camera stuff returns may the view matrix
 
 	m_Shader->Bind();
 	Pulse::Renderer::Submit(m_VertexArray);
