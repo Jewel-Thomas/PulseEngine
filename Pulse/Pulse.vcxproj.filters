@@ -1369,6 +1369,7 @@
     <ClInclude Include="src\Pulse\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Pulse\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Pulse\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Pulse\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp">
@@ -1409,5 +1410,6 @@
     <ClCompile Include="src\Pulse\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Pulse\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Pulse\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Pulse\Camera.cpp" />
   </ItemGroup>
 </Project>

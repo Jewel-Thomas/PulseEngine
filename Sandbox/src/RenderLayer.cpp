@@ -1,6 +1,9 @@
 #include "plspch.h"
 #include "RenderLayer.h"
 
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/string_cast.hpp>
+
 RenderLayer::RenderLayer()
 	: Layer("Render")
 {	
@@ -50,6 +53,7 @@ void RenderLayer::OnAttach()
 
 	m_VertexArray->SetIndexBuffer(indexBuffer);
 
+	PLS_INFO("Constructed Camera View Matrix : {0} ", glm::to_string(m_Camera.GetViewMatrix()));
 	// Custom Shader
 	m_Shader.reset(Pulse::Shader::Create(Pulse::ShaderSrc::SquareVertexSrc, Pulse::ShaderSrc::SquareFragmentSrc));
 }

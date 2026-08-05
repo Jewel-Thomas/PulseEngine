@@ -6,6 +6,7 @@ class RenderLayer : public Pulse::Layer
 private:
 	std::shared_ptr<Pulse::VertexArray> m_VertexArray;
 	std::shared_ptr<Pulse::Shader> m_Shader;
+	Pulse::Camera m_Camera;
 public:
 	RenderLayer();
 

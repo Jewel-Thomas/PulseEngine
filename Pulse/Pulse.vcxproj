@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="src\Pulse.h" />
     <ClInclude Include="src\Pulse\Application.h" />
+    <ClInclude Include="src\Pulse\Camera.h" />
     <ClInclude Include="src\Pulse\Core.h" />
     <ClInclude Include="src\Pulse\EntryPoint.h" />
     <ClInclude Include="src\Pulse\Events\ApplicationEvent.h" />
@@ -606,6 +607,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pulse\Application.cpp" />
+    <ClCompile Include="src\Pulse\Camera.cpp" />
     <ClCompile Include="src\Pulse\Imgui\ImguiBuild.cpp" />
     <ClCompile Include="src\Pulse\Imgui\ImguiLayer.cpp" />
     <ClCompile Include="src\Pulse\Layer.cpp" />
