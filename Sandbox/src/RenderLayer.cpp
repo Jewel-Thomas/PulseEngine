@@ -65,9 +65,11 @@ void RenderLayer::OnUpdate()
 
 	Pulse::Renderer::BeginScene();
 
-	// Camera stuff returns may the view matrix
+	m_Camera.OrbitCamera(glm::vec3(0.0f, 0.0f, 0.0f), 1.0f);
 
 	m_Shader->Bind();
+	m_Shader->UploadUniformMat4("u_View", m_Camera.GetViewMatrix());
+
 	Pulse::Renderer::Submit(m_VertexArray);
 
 	Pulse::Renderer::EndScene();

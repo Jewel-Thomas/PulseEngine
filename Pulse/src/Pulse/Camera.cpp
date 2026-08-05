@@ -7,7 +7,7 @@ namespace Pulse {
 
 	Camera::Camera()
 	{
-		UpdateViewMatrix(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+		UpdateViewMatrix(glm::vec3(0.0f, 0.0f, 0.5f), glm::vec3(0.0f, 0.0f, 0.0f));
 	}
 
 	const glm::mat4& Camera::GetViewMatrix() const
