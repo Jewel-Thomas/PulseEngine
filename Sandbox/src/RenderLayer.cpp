@@ -54,6 +54,8 @@ void RenderLayer::OnAttach()
 	m_VertexArray->SetIndexBuffer(indexBuffer);
 
 	PLS_INFO("Constructed Camera View Matrix : {0} ", glm::to_string(m_Camera.GetViewMatrix()));
+	PLS_INFO("Constructed Projection Matrix : {0} ", glm::to_string(m_Camera.GetProjectionMatrix()));
+
 	// Custom Shader
 	m_Shader.reset(Pulse::Shader::Create(Pulse::ShaderSrc::SquareVertexSrc, Pulse::ShaderSrc::SquareFragmentSrc));
 }
@@ -65,10 +67,11 @@ void RenderLayer::OnUpdate()
 
 	Pulse::Renderer::BeginScene();
 
-	m_Camera.OrbitCamera(glm::vec3(0.0f, 0.0f, 0.0f), 1.0f);
+	m_Camera.OrbitCamera(glm::vec3(0.0f, 0.0f, 0.0f), 5.0f);
 
 	m_Shader->Bind();
 	m_Shader->UploadUniformMat4("u_View", m_Camera.GetViewMatrix());
+	m_Shader->UploadUniformMat4("u_Proj", m_Camera.GetProjectionMatrix());
 
 	Pulse::Renderer::Submit(m_VertexArray);
 

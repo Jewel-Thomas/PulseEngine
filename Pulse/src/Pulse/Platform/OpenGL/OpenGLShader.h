@@ -16,7 +16,7 @@ namespace Pulse {
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
-		virtual void UploadUniformMat4(const std::string& name, const glm::mat4& viewMatrix) override;
+		virtual void UploadUniformMat4(const std::string& name, const glm::mat4& uploadMatrix) override;
 	};
 
 }
