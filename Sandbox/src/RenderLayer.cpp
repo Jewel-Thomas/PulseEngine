@@ -1,6 +1,9 @@
 #include "plspch.h"
 #include "RenderLayer.h"
 
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/string_cast.hpp>
+
 RenderLayer::RenderLayer()
 	: Layer("Render")
 {	
@@ -8,11 +11,15 @@ RenderLayer::RenderLayer()
 
 void RenderLayer::OnAttach()
 {
-	float vertices[4 * 7] = {
-	-0.75f, -0.75f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-	-0.75f,  0.75f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
-	 0.75f,  0.75f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-	 0.75f, -0.75f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f
+	float vertices[8 * 7] = {
+	-0.75f, -0.75f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+	-0.75f,  0.75f,  0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+	 0.75f,  0.75f,  0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
+	 0.75f, -0.75f,  0.0f, 0.5f, 0.5f, 0.5f, 1.0f,
+	-0.75f, -0.75f, -0.5f, 1.0f, 0.0f, 0.0f, 1.0f,
+	-0.75f,  0.75f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f,
+	 0.75f,  0.75f, -0.5f, 0.0f, 0.0f, 1.0f, 1.0f,
+	 0.75f, -0.75f, -0.5f, 0.5f, 0.5f, 0.5f, 1.0f
 	};
 
 	// Vertex Array
@@ -32,47 +39,25 @@ void RenderLayer::OnAttach()
 	m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 	// Index Buffer
-	unsigned int indices[6] = { 0, 1, 2, 2, 3, 0 };
+	unsigned int indices[36] = { 
+		0, 1, 2, 2, 3, 0, 
+		4, 5, 6, 6, 7, 4, 
+		6, 2, 3, 3, 7, 6, 
+		1, 5, 4, 4, 0, 1, 
+		1, 5, 6, 6, 2, 1, 
+		0, 3, 7, 7, 4, 0 
+	};
+
 	std::shared_ptr<Pulse::IndexBuffer> indexBuffer;
 	indexBuffer.reset(Pulse::IndexBuffer::Create(indices, sizeof(indices) / sizeof(indices[0])));
 
 	m_VertexArray->SetIndexBuffer(indexBuffer);
 
+	PLS_INFO("Constructed Camera View Matrix : {0} ", glm::to_string(m_Camera.GetViewMatrix()));
+	PLS_INFO("Constructed Projection Matrix : {0} ", glm::to_string(m_Camera.GetProjectionMatrix()));
+
 	// Custom Shader
 	m_Shader.reset(Pulse::Shader::Create(Pulse::ShaderSrc::SquareVertexSrc, Pulse::ShaderSrc::SquareFragmentSrc));
-
-	// Second Shape
-
-	float triangleVertices[3 * 3] = {
-		-0.5f, -0.5f, 0.0f,
-		 0.5f, -0.5f, 0.0f,
-		 0.0f,  0.5f, 0.0f
-	};
-
-	// Vertex Array
-	m_TriangleVertexArray.reset(Pulse::VertexArray::Create());
-
-	// Vertex Buffer
-	std::shared_ptr<Pulse::VertexBuffer> triangleVertexBuffer;
-	triangleVertexBuffer.reset(Pulse::VertexBuffer::Create(triangleVertices, sizeof(triangleVertices)));
-
-
-	Pulse::BufferLayout triangleBufferLayout = {
-		{ "a_Position", Pulse::PLSType::Float3, false}
-	};
-
-	triangleVertexBuffer->SetLayout(triangleBufferLayout);
-	m_TriangleVertexArray->AddVertexBuffer(triangleVertexBuffer);
-
-	// Index Buffer
-	unsigned int triangleIndices[3] = { 0, 1, 2 };
-	std::shared_ptr<Pulse::IndexBuffer> triangleIndexBuffer;
-	triangleIndexBuffer.reset(Pulse::IndexBuffer::Create(triangleIndices, sizeof(triangleIndices) / sizeof(triangleIndices[0])));
-
-	m_TriangleVertexArray->SetIndexBuffer(triangleIndexBuffer);
-
-	// Custom Shader
-	m_TriangleShader.reset(Pulse::Shader::Create(Pulse::ShaderSrc::TriangleVertexSrc, Pulse::ShaderSrc::TriangleFragmentSrc));
 }
 
 void RenderLayer::OnUpdate()
@@ -82,11 +67,13 @@ void RenderLayer::OnUpdate()
 
 	Pulse::Renderer::BeginScene();
 
-	m_Shader->Bind();
-	Pulse::Renderer::Submit(m_VertexArray);
+	m_Camera.OrbitCamera(glm::vec3(0.0f, 0.0f, 0.0f), 5.0f);
 
-	m_TriangleShader->Bind();
-	Pulse::Renderer::Submit(m_TriangleVertexArray);
+	m_Shader->Bind();
+	m_Shader->UploadUniformMat4("u_View", m_Camera.GetViewMatrix());
+	m_Shader->UploadUniformMat4("u_Proj", m_Camera.GetProjectionMatrix());
+
+	Pulse::Renderer::Submit(m_VertexArray);
 
 	Pulse::Renderer::EndScene();
 }

@@ -21,3 +21,6 @@
 #include "Pulse/Renderer/Renderer.h"
 #include "Pulse/Renderer/RenderCommand.h"
 
+// Camera
+#include "Pulse/Camera.h"
+
