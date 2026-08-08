@@ -45,4 +45,9 @@ namespace Pulse {
 		UpdateViewMatrix(cameraPosition, targetPosition);
 	}
 
+	void Camera::CameraMovement(const glm::vec3& cameraPosition, const glm::vec3& cameraFront, const glm::vec3& cameraUp)
+	{
+		// TODO : Add Movement Logic
+	}
+
 }

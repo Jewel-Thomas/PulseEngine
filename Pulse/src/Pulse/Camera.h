@@ -20,6 +20,7 @@ namespace Pulse {
 		void UpdateProjMatrix(float fov, float nearPlane, float farPlane);
 
 		void OrbitCamera(const glm::vec3& targetPosition, float radius);
+		void CameraMovement(const glm::vec3& cameraPosition, const glm::vec3& cameraFront, const glm::vec3& cameraUp);
 	};
 
 }
