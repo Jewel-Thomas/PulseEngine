@@ -67,7 +67,7 @@ void RenderLayer::OnUpdate()
 
 	Pulse::Renderer::BeginScene();
 
-	m_Camera.OrbitCamera(glm::vec3(0.0f, 0.0f, 0.0f), 5.0f);
+	m_Camera.CameraMovement();
 
 	m_Shader->Bind();
 	m_Shader->UploadUniformMat4("u_View", m_Camera.GetViewMatrix());
