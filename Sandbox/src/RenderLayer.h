@@ -12,4 +12,5 @@ public:
 
 	virtual void OnAttach() override;
 	virtual void OnUpdate() override;
+	virtual void OnEvent(Pulse::Event& event) override;
 };
