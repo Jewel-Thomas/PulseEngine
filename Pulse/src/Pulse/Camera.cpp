@@ -1,6 +1,7 @@
 #include "plspch.h"
 #include "Camera.h"
 
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -31,21 +32,17 @@ namespace Pulse {
 		m_View = glm::lookAt(cameraPosition, targetPosition, glm::vec3(0.0f, 1.0f, 0.0f));
 	}
 
-	void Camera::UpdateProjMatrix(float fov, float nearPlane, float farPlane)
+	void Camera::UpdateProjMatrix(float fov, float nearPlane, float farPlane, int viewWidth, int viewHeight)
 	{
 		GLFWwindow* window = glfwGetCurrentContext();
+
+		if (viewWidth || viewHeight)
+			glViewport(0, 0, viewWidth, viewHeight);
+
 		glfwGetFramebufferSize(window, &m_ViewWidth, &m_ViewHeight);
-		float aspectRatio = (float)m_ViewWidth / (float)m_ViewWidth;
+		float aspectRatio = (float)m_ViewWidth / (float)m_ViewHeight;
 
 		m_Proj = glm::perspective(glm::radians(fov), aspectRatio, nearPlane, farPlane);
-	}
-
-	void Camera::OrbitCamera(const glm::vec3& targetPosition, float radius)
-	{
-		float camX = glm::sin(glfwGetTime()) * radius;
-		float camZ = glm::cos(glfwGetTime()) * radius;
-		glm::vec3 cameraPosition = glm::vec3(camX, 0.0f, camZ);
-		UpdateViewMatrix(cameraPosition, targetPosition);
 	}
 
 	void Camera::CameraMovement()
@@ -55,15 +52,23 @@ namespace Pulse {
 		m_LastFrameTime = currentTime;
 
 		const float cameraSpeed = 2.5f * m_DeltaTime;
+
+		glm::vec3 cameraRight = glm::normalize(glm::cross(m_CameraFront, m_WorldUp));
+		glm::vec3 cameraUp = glm::normalize(glm::cross(m_CameraFront, cameraRight));
+
 		GLFWwindow* window = glfwGetCurrentContext();
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 			m_CameraPosition += cameraSpeed * m_CameraFront;
 		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 			m_CameraPosition -= cameraSpeed * m_CameraFront;
 		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-			m_CameraPosition -= cameraSpeed * glm::normalize(glm::cross(m_CameraFront, m_CameraUp));
+			m_CameraPosition -= cameraSpeed * cameraRight;
 		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-			m_CameraPosition += cameraSpeed * glm::normalize(glm::cross(m_CameraFront, m_CameraUp));
+			m_CameraPosition += cameraSpeed * cameraRight;
+		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+			m_CameraPosition -= cameraSpeed * cameraUp;
+		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+			m_CameraPosition += cameraSpeed * cameraUp;
 
 		UpdateViewMatrix(m_CameraPosition, m_CameraPosition + m_CameraFront);
 	}
