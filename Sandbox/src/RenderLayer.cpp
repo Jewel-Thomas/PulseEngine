@@ -85,14 +85,11 @@ void RenderLayer::OnEvent(Pulse::Event& event)
 		Pulse::MouseMovedEvent& mouseMovedEvent = static_cast<Pulse::MouseMovedEvent&>(event);
 		m_Camera.UpdateCameraFrontCallBack(mouseMovedEvent.GetX(), mouseMovedEvent.GetY());
 	}
-}
 
-//void OnEvent(Pulse::Event& event) override
-//{
-//	if (event.GetEventType() == Pulse::EventType::MouseButtonPressed)
-//	{
-//		Pulse::MouseButtonPressedEvent& mouseEvent = static_cast<Pulse::MouseButtonPressedEvent&>(event);
-//		if (mouseEvent.GetMouseButton() == PLS_MOUSE_BUTTON_1)
-//			PLS_INFO("Left Mouse Button was clicked!");
-//	}
-//}
+	if (event.GetEventType() == Pulse::EventType::WindowResize)
+	{
+		Pulse::WindowResizeEvent& resizeEvent = static_cast<Pulse::WindowResizeEvent&>(event);
+
+		m_Camera.UpdateProjMatrix(45.0f, 0.1f, 100.0f, resizeEvent.GetWidth(), resizeEvent.GetHeight());
+	}
+}

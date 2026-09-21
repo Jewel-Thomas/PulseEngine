@@ -12,7 +12,7 @@ namespace Pulse {
 
 		glm::vec3 m_CameraPosition = glm::vec3(0.0f, 0.0f, 5.0f);
 		glm::vec3 m_CameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-		glm::vec3 m_CameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+		glm::vec3 m_WorldUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
 		int m_ViewWidth;
 		int m_ViewHeight;
@@ -34,9 +34,8 @@ namespace Pulse {
 		const glm::mat4& GetProjectionMatrix() const;
 
 		void UpdateViewMatrix(const glm::vec3& cameraPosition, const glm::vec3& targetPosition);
-		void UpdateProjMatrix(float fov, float nearPlane, float farPlane);
+		void UpdateProjMatrix(float fov, float nearPlane, float farPlane, int viewWidth = 0, int viewHeight = 0);
 
-		void OrbitCamera(const glm::vec3& targetPosition, float radius);
 		void CameraMovement();
 		void UpdateCameraFrontCallBack(float xPos, float yPos);
 	};
