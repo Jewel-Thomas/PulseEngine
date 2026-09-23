@@ -18,6 +18,7 @@ namespace Pulse {
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
+		virtual void OnEvent(Event& event) override;
 		virtual void OnImguiRender() override;
 
 		void OnBegin();

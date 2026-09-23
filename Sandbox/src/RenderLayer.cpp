@@ -92,4 +92,14 @@ void RenderLayer::OnEvent(Pulse::Event& event)
 
 		m_Camera.UpdateProjMatrix(45.0f, 0.1f, 100.0f, resizeEvent.GetWidth(), resizeEvent.GetHeight());
 	}
+
+	if (event.GetEventType() == Pulse::EventType::KeyPressed)
+	{
+		Pulse::KeyPressedEvent& keyPressEvent = static_cast<Pulse::KeyPressedEvent&>(event);
+
+		if (keyPressEvent.GetKeyCode() == PLS_KEY_ESCAPE && keyPressEvent.GetRepeatCount() == 0)
+		{
+			m_Camera.ToggleCameraLock();
+		}
+	}
 }

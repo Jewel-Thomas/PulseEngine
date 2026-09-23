@@ -25,7 +25,9 @@ namespace Pulse {
 		float m_Sensitivity = 0.1f;
 		float m_LastXMousePosition;
 		float m_LastYMousePosition;
+
 		bool m_IsFirstMousePosition = true;
+		bool m_IsMouseLocked = false;
 
 	public:
 		Camera();
@@ -38,6 +40,7 @@ namespace Pulse {
 
 		void CameraMovement();
 		void UpdateCameraFrontCallBack(float xPos, float yPos);
+		void ToggleCameraLock();
 	};
 
 }
