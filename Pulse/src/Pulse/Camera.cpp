@@ -15,6 +15,7 @@ namespace Pulse {
 		m_Pitch = 0.0f;
 		m_LastXMousePosition = m_ViewWidth / 2.0f;
 		m_LastYMousePosition = m_ViewHeight / 2.0f;
+		ToggleCameraLock();
 	}
 
 	const glm::mat4& Camera::GetViewMatrix() const
@@ -57,6 +58,7 @@ namespace Pulse {
 		glm::vec3 cameraUp = glm::normalize(glm::cross(m_CameraFront, cameraRight));
 
 		GLFWwindow* window = glfwGetCurrentContext();
+
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 			m_CameraPosition += cameraSpeed * m_CameraFront;
 		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -68,7 +70,7 @@ namespace Pulse {
 		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
 			m_CameraPosition -= cameraSpeed * cameraUp;
 		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
-			m_CameraPosition += cameraSpeed * cameraUp;
+			m_CameraPosition += cameraSpeed * cameraUp; 
 
 		UpdateViewMatrix(m_CameraPosition, m_CameraPosition + m_CameraFront);
 	}
@@ -102,6 +104,20 @@ namespace Pulse {
 		forwardDirection.z = glm::sin(glm::radians(m_Yaw)) * glm::cos(glm::radians(m_Pitch));
 
 		m_CameraFront = forwardDirection;
+	}
+
+	void Camera::ToggleCameraLock()
+	{
+		m_IsMouseLocked = !m_IsMouseLocked;
+		GLFWwindow* window = glfwGetCurrentContext();
+
+		m_IsMouseLocked ? glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED) :
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
+		double currentMouseX, currentMouseY;
+		glfwGetCursorPos(window, &currentMouseX, &currentMouseY);
+		m_LastXMousePosition = currentMouseX;
+		m_LastYMousePosition = currentMouseY;
 	}
 
 }

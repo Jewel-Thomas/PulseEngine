@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include "Pulse/Application.h"
+#include "Pulse/KeyCodes.h"
 
 namespace Pulse {
 
@@ -95,6 +96,20 @@ namespace Pulse {
             ImGui::RenderPlatformWindowsDefault();
 
             glfwMakeContextCurrent(backup_current_context);
+        }
+    }
+
+    void ImguiLayer::OnEvent(Event& event)
+    {
+        if (event.GetEventType() == EventType::KeyPressed)
+        {
+            KeyPressedEvent& keyPressEvent = static_cast<KeyPressedEvent&>(event);
+
+            // Replace with suitable handling!
+            if (keyPressEvent.GetKeyCode() == PLS_KEY_ESCAPE && keyPressEvent.GetRepeatCount() == 0)
+            {
+                PLS_CORE_TRACE("Imgui Window Closed!");
+            }
         }
     }
 
